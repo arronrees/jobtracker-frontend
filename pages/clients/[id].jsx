@@ -1,5 +1,9 @@
 import ClientForm from '../../components/forms/ClientForm';
+import CmsForm from '../../components/forms/CmsForm';
+import DatabaseForm from '../../components/forms/DatabaseForm';
+import EmailForm from '../../components/forms/EmailForm';
 import FtpForm from '../../components/forms/FtpForm';
+import OtherAccountForm from '../../components/forms/OtherAccountForm';
 
 export default function Client({ client }) {
   console.log(client);
@@ -16,12 +20,24 @@ export default function Client({ client }) {
       ))}
 
       <h2 className='mb-4 font-bold'>Email Details</h2>
+      {client.emailDetails.map((detail) => (
+        <EmailForm key={detail.id} detail={detail} />
+      ))}
 
       <h2 className='mb-4 font-bold'>Database Details</h2>
+      {client.databaseDetails.map((detail) => (
+        <DatabaseForm key={detail.id} detail={detail} />
+      ))}
 
       <h2 className='mb-4 font-bold'>CMS Details</h2>
+      {client.cmsDetails.map((detail) => (
+        <CmsForm key={detail.id} detail={detail} />
+      ))}
 
       <h2 className='mb-4 font-bold'>Other Account Details</h2>
+      {client.otherDetails.map((detail) => (
+        <OtherAccountForm key={detail.id} detail={detail} />
+      ))}
     </div>
   );
 }
