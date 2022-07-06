@@ -1,15 +1,15 @@
 import { useRouter } from 'next/router';
 import { useRef } from 'react';
-import FormInput from '../formSections/FormInput';
+import FormInput from '../../formSections/FormInput';
 
-export default function DatabaseForm({ detail }) {
+export default function FtpForm({ detail }) {
   const router = useRouter();
 
   const formRef = useRef(null);
 
   const sendData = async (body) => {
     const res = await fetch(
-      `http://localhost:4000/api/clients/database-details/${detail.id}`,
+      `http://localhost:4000/api/clients/ftp-details/${detail.id}`,
       {
         method: 'PUT',
         body,
@@ -35,10 +35,13 @@ export default function DatabaseForm({ detail }) {
 
     const formDetails = {
       url: formValues.get('url') ? formValues.get('url') : null,
-      databaseName: formValues.get('databaseName')
-        ? formValues.get('databaseName')
+      ftpAddress: formValues.get('ftpAddress')
+        ? formValues.get('ftpAddress')
         : null,
-      username: formValues.get('username') ? formValues.get('username') : null,
+      hostDirectory: formValues.get('hostDirectory')
+        ? formValues.get('hostDirectory')
+        : null,
+      login: formValues.get('login') ? formValues.get('login') : null,
       password: formValues.get('password') ? formValues.get('password') : null,
     };
 
@@ -55,14 +58,19 @@ export default function DatabaseForm({ detail }) {
     <form onSubmit={handleFormSubmit} ref={formRef}>
       <FormInput labelText='URL' inputName='url' defaultValue={detail.url} />
       <FormInput
-        labelText='Databse Name'
-        inputName='databaseName'
-        defaultValue={detail.databaseName}
+        labelText='FTP Address'
+        inputName='ftpAddress'
+        defaultValue={detail.ftpAddress}
       />
       <FormInput
-        labelText='Username'
-        inputName='username'
-        defaultValue={detail.username}
+        labelText='Host Directory'
+        inputName='hostDirectory'
+        defaultValue={detail.hostDirectory}
+      />
+      <FormInput
+        labelText='Login'
+        inputName='login'
+        defaultValue={detail.login}
       />
       <FormInput
         labelText='Password'
@@ -73,7 +81,7 @@ export default function DatabaseForm({ detail }) {
         type='submit'
         className='inline-block text-center font-bold bg-indigo-600 text-white px-8 py-2 rounded-md transition duration-300 hover:bg-indigo-500 focus:ring-2 ring-inbg-indigo-600 ring-offset-2 focus:outline-none lg:text-lg'
       >
-        Update Database Detail
+        Update Ftp Detail
       </button>
     </form>
   );

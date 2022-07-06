@@ -1,16 +1,15 @@
 import { useRouter } from 'next/router';
 import { useRef } from 'react';
-import FormInput from '../formSections/FormInput';
-import FormTextArea from '../formSections/FormTextArea';
+import FormInput from '../../formSections/FormInput';
 
-export default function OtherAccountForm({ detail }) {
+export default function EmailForm({ detail }) {
   const router = useRouter();
 
   const formRef = useRef(null);
 
   const sendData = async (body) => {
     const res = await fetch(
-      `http://localhost:4000/api/clients/other-details/${detail.id}`,
+      `http://localhost:4000/api/clients/email-details/${detail.id}`,
       {
         method: 'PUT',
         body,
@@ -35,11 +34,9 @@ export default function OtherAccountForm({ detail }) {
     const formValues = new FormData(formRef.current);
 
     const formDetails = {
-      name: formValues.get('name') ? formValues.get('name') : null,
-      username: formValues.get('username') ? formValues.get('username') : null,
+      domain: formValues.get('domain') ? formValues.get('domain') : null,
       email: formValues.get('email') ? formValues.get('email') : null,
       password: formValues.get('password') ? formValues.get('password') : null,
-      notes: formValues.get('notes') ? formValues.get('notes') : null,
     };
 
     const apiRespsonse = await sendData(JSON.stringify(formDetails));
@@ -53,11 +50,10 @@ export default function OtherAccountForm({ detail }) {
 
   return (
     <form onSubmit={handleFormSubmit} ref={formRef}>
-      <FormInput labelText='Name' inputName='name' defaultValue={detail.name} />
       <FormInput
-        labelText='Username'
-        inputName='username'
-        defaultValue={detail.username}
+        labelText='Domain'
+        inputName='domain'
+        defaultValue={detail.domain}
       />
       <FormInput
         labelText='Email'
@@ -68,11 +64,6 @@ export default function OtherAccountForm({ detail }) {
         labelText='Password'
         inputName='password'
         defaultValue={detail.password}
-      />
-      <FormTextArea
-        labelText='Notes'
-        inputName='notes'
-        defaultValue={detail.notes}
       />
       <button
         type='submit'
