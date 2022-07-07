@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import { useRef } from 'react';
+import sendFetch from '../../../utils/sendFetch';
 import FormInput from '../../formSections/FormInput';
 import FormTextArea from '../../formSections/FormTextArea';
 
@@ -7,27 +8,6 @@ export default function OtherAccountForm({ detail }) {
   const router = useRouter();
 
   const formRef = useRef(null);
-
-  const sendData = async (body) => {
-    const res = await fetch(
-      `http://localhost:4000/api/clients/other-details/${detail.id}`,
-      {
-        method: 'PUT',
-        body,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    );
-
-    const data = await res.json();
-
-    if (res.ok) {
-      return data;
-    } else {
-      return false;
-    }
-  };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -42,12 +22,16 @@ export default function OtherAccountForm({ detail }) {
       notes: formValues.get('notes') ? formValues.get('notes') : null,
     };
 
-    const apiRespsonse = await sendData(JSON.stringify(formDetails));
+    const { data, error } = await sendFetch(
+      `http://localhost:4000/api/clients/other-details/${detail.id}`,
+      'PUT',
+      formDetails
+    );
 
-    if (apiRespsonse) {
+    if (data) {
       router.reload();
     } else {
-      console.log(apiRespsonse);
+      console.log(error);
     }
   };
 
@@ -78,7 +62,7 @@ export default function OtherAccountForm({ detail }) {
         type='submit'
         className='inline-block text-center font-bold bg-indigo-600 text-white px-8 py-2 rounded-md transition duration-300 hover:bg-indigo-500 focus:ring-2 ring-inbg-indigo-600 ring-offset-2 focus:outline-none lg:text-lg'
       >
-        Update Email Detail
+        Update Client Account Detail
       </button>
     </form>
   );

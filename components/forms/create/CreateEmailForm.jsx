@@ -1,32 +1,12 @@
 import { useRouter } from 'next/router';
 import { useRef } from 'react';
+import sendFetch from '../../../utils/sendFetch';
 import FormInput from '../../formSections/FormInput';
 
 export default function EmailForm({ client }) {
   const router = useRouter();
 
   const formRef = useRef(null);
-
-  const sendData = async (body) => {
-    const res = await fetch(
-      `http://localhost:4000/api/clients/email-details/${client.id}`,
-      {
-        method: 'POST',
-        body,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    );
-
-    const data = await res.json();
-
-    if (res.ok) {
-      return data;
-    } else {
-      return false;
-    }
-  };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -39,12 +19,16 @@ export default function EmailForm({ client }) {
       password: formValues.get('password') ? formValues.get('password') : null,
     };
 
-    const apiRespsonse = await sendData(JSON.stringify(formDetails));
+    const { data, error } = await sendFetch(
+      `http://localhost:4000/api/clients/email-details/${client.id}`,
+      'POST',
+      formDetails
+    );
 
-    if (apiRespsonse) {
+    if (data) {
       router.reload();
     } else {
-      console.log(apiRespsonse);
+      console.log(error);
     }
   };
 
