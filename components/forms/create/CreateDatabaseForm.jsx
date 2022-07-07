@@ -37,7 +37,7 @@ export default function DatabaseForm({ client }) {
   };
 
   return (
-    <form onSubmit={handleFormSubmit} ref={formRef}>
+    <form onSubmit={handleFormSubmit} ref={formRef} className='w-full'>
       <FormInput labelText='URL' inputName='url' />
       <FormInput labelText='Databse Name' inputName='databaseName' />
       <FormInput labelText='Username' inputName='username' />

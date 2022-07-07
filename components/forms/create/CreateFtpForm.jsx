@@ -40,7 +40,7 @@ export default function FtpForm({ client }) {
   };
 
   return (
-    <form onSubmit={handleFormSubmit} ref={formRef}>
+    <form onSubmit={handleFormSubmit} ref={formRef} className='w-full'>
       <FormInput labelText='URL' inputName='url' />
       <FormInput labelText='FTP Address' inputName='ftpAddress' />
       <FormInput labelText='Host Directory' inputName='hostDirectory' />

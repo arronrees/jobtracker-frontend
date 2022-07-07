@@ -71,7 +71,7 @@ export default function ClientForm({ client }) {
     <form
       onSubmit={handleFormSubmit}
       ref={formRef}
-      className='grid grid-cols-2 gap-x-16 gap-y-8'
+      className='grid grid-cols-2 gap-x-16 gap-y-8 w-full'
     >
       <div>
         <FormInput
@@ -111,7 +111,6 @@ export default function ClientForm({ client }) {
         />
       </div>
       <div>
-        <p className='font-bold'>Address</p>
         <FormInput
           labelText='Address Line 1'
           inputName='addressLine1'

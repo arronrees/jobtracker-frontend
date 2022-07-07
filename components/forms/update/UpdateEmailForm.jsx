@@ -34,7 +34,11 @@ export default function EmailForm({ detail }) {
   };
 
   return (
-    <form onSubmit={handleFormSubmit} ref={formRef}>
+    <form
+      onSubmit={handleFormSubmit}
+      ref={formRef}
+      className='mt-6 w-full border-b-2 pb-4'
+    >
       <FormInput
         labelText='Domain'
         inputName='domain'

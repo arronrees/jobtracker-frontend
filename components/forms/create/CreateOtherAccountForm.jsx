@@ -37,7 +37,7 @@ export default function OtherAccountForm({ client }) {
   };
 
   return (
-    <form onSubmit={handleFormSubmit} ref={formRef}>
+    <form onSubmit={handleFormSubmit} ref={formRef} className='w-full'>
       <FormInput labelText='Name' inputName='name' />
       <FormInput labelText='Username' inputName='username' />
       <FormInput labelText='Email' inputName='email' />

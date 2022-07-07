@@ -34,7 +34,7 @@ export default function EmailForm({ client }) {
   };
 
   return (
-    <form onSubmit={handleFormSubmit} ref={formRef}>
+    <form onSubmit={handleFormSubmit} ref={formRef} className='w-full'>
       <FormInput labelText='Domain' inputName='domain' />
       <FormInput labelText='Email' inputName='email' />
       <FormInput labelText='Password' inputName='password' />

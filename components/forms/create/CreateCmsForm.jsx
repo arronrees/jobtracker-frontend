@@ -35,7 +35,7 @@ export default function CmsForm({ client }) {
   };
 
   return (
-    <form onSubmit={handleFormSubmit} ref={formRef}>
+    <form onSubmit={handleFormSubmit} ref={formRef} className='w-full'>
       <FormInput labelText='URL' inputName='url' />
       <FormInput labelText='Email' inputName='email' />
       <FormInput labelText='Username' inputName='username' />

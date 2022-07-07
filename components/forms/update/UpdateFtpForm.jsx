@@ -40,7 +40,11 @@ export default function FtpForm({ detail }) {
   };
 
   return (
-    <form onSubmit={handleFormSubmit} ref={formRef}>
+    <form
+      onSubmit={handleFormSubmit}
+      ref={formRef}
+      className='mt-6 border-b-2 pb-4'
+    >
       <FormInput labelText='URL' inputName='url' defaultValue={detail.url} />
       <FormInput
         labelText='FTP Address'
