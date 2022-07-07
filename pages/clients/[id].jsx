@@ -14,12 +14,8 @@ export default function Client({ client }) {
   console.log(client);
 
   return (
-    <div className='p-8 grid grid-cols-2 gap-8'>
-      <section>
-        <h1 className='mb-8 font-bold'>{client.name}</h1>
-
-        <UpdateClientForm client={client} />
-
+    <div className='p-8 grid grid-cols-12 gap-8'>
+      <section className='col-span-4'>
         <h2 className='mb-4 font-bold'>FTP Details</h2>
         {client.ftpDetails.map((detail) => (
           <UpdateFtpForm key={detail.id} detail={detail} />
@@ -45,7 +41,7 @@ export default function Client({ client }) {
           <UpdateOtherAccountForm key={detail.id} detail={detail} />
         ))}
       </section>
-      <section>
+      <section className='col-span-8'>
         <h2 className='mb-8 font-bold'>Create FTP Details</h2>
         <CreateFtpForm client={client} />
 

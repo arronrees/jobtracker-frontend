@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { useRef } from 'react';
 import sendFetch from '../../../utils/sendFetch';
+import FormButton from '../../formSections/FormButton';
 import FormInput from '../../formSections/FormInput';
 
 export default function FtpForm({ client }) {
@@ -45,12 +46,7 @@ export default function FtpForm({ client }) {
       <FormInput labelText='Host Directory' inputName='hostDirectory' />
       <FormInput labelText='Login' inputName='login' />
       <FormInput labelText='Password' inputName='password' />
-      <button
-        type='submit'
-        className='inline-block text-center font-bold bg-indigo-600 text-white px-8 py-2 rounded-md transition duration-300 hover:bg-indigo-500 focus:ring-2 ring-inbg-indigo-600 ring-offset-2 focus:outline-none lg:text-lg'
-      >
-        Create Ftp Detail
-      </button>
+      <FormButton text='Create Ftp Detail' />
     </form>
   );
 }

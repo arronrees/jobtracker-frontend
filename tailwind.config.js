@@ -6,6 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      sans: ['Work Sans', 'Roboto'],
+    },
   },
   plugins: [require('@tailwindcss/forms')],
 };

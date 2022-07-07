@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div>
+    <div className='text-cyan-900 text-sm'>
       <Link href='/'>
         <a>Home</a>
       </Link>

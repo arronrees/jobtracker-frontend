@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { useRef } from 'react';
 import sendFetch from '../../../utils/sendFetch';
+import FormButton from '../../formSections/FormButton';
 import FormInput from '../../formSections/FormInput';
 import FormTextArea from '../../formSections/FormTextArea';
 
@@ -97,12 +98,7 @@ export default function ClientForm({ client }) {
       <FormInput labelText='County' inputName='county' />
       <FormInput labelText='Postcode' inputName='postCode' />
       <FormInput labelText='Country' inputName='country' />
-      <button
-        type='submit'
-        className='inline-block text-center font-bold bg-indigo-600 text-white px-8 py-2 rounded-md transition duration-300 hover:bg-indigo-500 focus:ring-2 ring-inbg-indigo-600 ring-offset-2 focus:outline-none lg:text-lg'
-      >
-        Create New Client
-      </button>
+      <FormButton text='Create New Client' />
     </form>
   );
 }

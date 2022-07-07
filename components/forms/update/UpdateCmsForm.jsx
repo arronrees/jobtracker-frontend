@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { useRef } from 'react';
 import sendFetch from '../../../utils/sendFetch';
+import FormButton from '../../formSections/FormButton';
 import FormInput from '../../formSections/FormInput';
 
 export default function CmsForm({ detail }) {
@@ -51,12 +52,7 @@ export default function CmsForm({ detail }) {
         inputName='password'
         defaultValue={detail.password}
       />
-      <button
-        type='submit'
-        className='inline-block text-center font-bold bg-indigo-600 text-white px-8 py-2 rounded-md transition duration-300 hover:bg-indigo-500 focus:ring-2 ring-inbg-indigo-600 ring-offset-2 focus:outline-none lg:text-lg'
-      >
-        Update Cms Detail
-      </button>
+      <FormButton text='Update Cms Detail' />
     </form>
   );
 }
