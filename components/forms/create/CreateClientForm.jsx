@@ -34,6 +34,9 @@ export default function ClientForm({ client }) {
     const formDetails = {
       client: {
         name: formValues.get('name') ? formValues.get('name') : null,
+        primaryContactName: formValues.get('primaryContactName')
+          ? formValues.get('primaryContactName')
+          : null,
         primaryContactNumber: formValues.get('primaryContactNumber')
           ? formValues.get('primaryContactNumber')
           : null,
@@ -79,6 +82,10 @@ export default function ClientForm({ client }) {
   return (
     <form onSubmit={handleFormSubmit} ref={formRef}>
       <FormInput labelText='Name' inputName='name' />
+      <FormInput
+        labelText='Primary Contact Name'
+        inputName='primaryContactName'
+      />
       <FormInput
         labelText='Primary Contact Number'
         inputName='primaryContactNumber'

@@ -1,4 +1,4 @@
-import ClientForm from '../../components/forms/update/UpdateClientForm';
+import UpdateClientForm from '../../components/forms/update/UpdateClientForm';
 import UpdateCmsForm from '../../components/forms/update/UpdateCmsForm';
 import UpdateDatabaseForm from '../../components/forms/update/UpdateDatabaseForm';
 import UpdateEmailForm from '../../components/forms/update/UpdateEmailForm';
@@ -14,11 +14,11 @@ export default function Client({ client }) {
   console.log(client);
 
   return (
-    <div className='p-8 grid grid-cols-2'>
+    <div className='p-8 grid grid-cols-2 gap-8'>
       <section>
         <h1 className='mb-8 font-bold'>{client.name}</h1>
 
-        <ClientForm client={client} />
+        <UpdateClientForm client={client} />
 
         <h2 className='mb-4 font-bold'>FTP Details</h2>
         {client.ftpDetails.map((detail) => (
