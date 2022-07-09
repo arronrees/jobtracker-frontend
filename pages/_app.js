@@ -1,17 +1,11 @@
 import '../styles/globals.css';
-import Link from 'next/link';
+import Layout from '../components/Layout';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div className='text-cyan-900 text-sm'>
-      <Link href='/'>
-        <a>Home</a>
-      </Link>
-      <Link href='/clients/create'>
-        <a>Create</a>
-      </Link>
+    <Layout>
       <Component {...pageProps} />
-    </div>
+    </Layout>
   );
 }
 
