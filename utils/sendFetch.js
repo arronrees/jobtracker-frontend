@@ -11,13 +11,9 @@ export default async function sendFetch(url = '', method, body = {}) {
       },
     });
 
-    if (!res.ok) {
-      throw Error('Failed to send data');
-    }
-
     const json = await res.json();
 
-    if (json.error) {
+    if (!json.success) {
       data = null;
       error = json.error;
     } else {

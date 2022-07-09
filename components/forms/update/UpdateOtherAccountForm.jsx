@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { useRef } from 'react';
 import sendFetch from '../../../utils/sendFetch';
+import DeleteDetailButton from '../../formSections/DeleteDetailButton';
 import FormButton from '../../formSections/FormButton';
 import FormInput from '../../formSections/FormInput';
 import FormTextArea from '../../formSections/FormTextArea';
@@ -37,33 +38,44 @@ export default function OtherAccountForm({ detail }) {
   };
 
   return (
-    <form
-      onSubmit={handleFormSubmit}
-      ref={formRef}
-      className='mt-6 w-full border-b-2 pb-4'
-    >
-      <FormInput labelText='Name' inputName='name' defaultValue={detail.name} />
-      <FormInput
-        labelText='Username'
-        inputName='username'
-        defaultValue={detail.username}
+    <div className='border-b-2 pb-4'>
+      <form
+        onSubmit={handleFormSubmit}
+        ref={formRef}
+        className='mt-6 w-full pb-2'
+      >
+        <FormInput
+          labelText='Name'
+          inputName='name'
+          defaultValue={detail.name}
+        />
+        <FormInput
+          labelText='Username'
+          inputName='username'
+          defaultValue={detail.username}
+        />
+        <FormInput
+          labelText='Email'
+          inputName='email'
+          defaultValue={detail.email}
+        />
+        <FormInput
+          labelText='Password'
+          inputName='password'
+          defaultValue={detail.password}
+        />
+        <FormTextArea
+          labelText='Notes'
+          inputName='notes'
+          defaultValue={detail.notes}
+        />
+        <FormButton text='Update Client Account Detail' />
+      </form>
+      <DeleteDetailButton
+        text='Delete Client Account Detail'
+        detail='other'
+        id={detail.id}
       />
-      <FormInput
-        labelText='Email'
-        inputName='email'
-        defaultValue={detail.email}
-      />
-      <FormInput
-        labelText='Password'
-        inputName='password'
-        defaultValue={detail.password}
-      />
-      <FormTextArea
-        labelText='Notes'
-        inputName='notes'
-        defaultValue={detail.notes}
-      />
-      <FormButton text='Update Client Account Detail' />
-    </form>
+    </div>
   );
 }

@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { useRef } from 'react';
 import sendFetch from '../../../utils/sendFetch';
+import DeleteDetailButton from '../../formSections/DeleteDetailButton';
 import FormButton from '../../formSections/FormButton';
 import FormInput from '../../formSections/FormInput';
 
@@ -35,28 +36,35 @@ export default function CmsForm({ detail }) {
   };
 
   return (
-    <form
-      onSubmit={handleFormSubmit}
-      ref={formRef}
-      className='mt-6 w-full border-b-2 pb-4'
-    >
-      <FormInput labelText='URL' inputName='url' defaultValue={detail.url} />
-      <FormInput
-        labelText='Email'
-        inputName='email'
-        defaultValue={detail.email}
+    <div className='pb-4 border-b-2'>
+      <form
+        onSubmit={handleFormSubmit}
+        ref={formRef}
+        className='mt-6 w-full pb-2'
+      >
+        <FormInput labelText='URL' inputName='url' defaultValue={detail.url} />
+        <FormInput
+          labelText='Email'
+          inputName='email'
+          defaultValue={detail.email}
+        />
+        <FormInput
+          labelText='Username'
+          inputName='username'
+          defaultValue={detail.username}
+        />
+        <FormInput
+          labelText='Password'
+          inputName='password'
+          defaultValue={detail.password}
+        />
+        <FormButton text='Update CMS Detail' />
+      </form>
+      <DeleteDetailButton
+        text='Delete CMS Detail'
+        detail='cms'
+        id={detail.id}
       />
-      <FormInput
-        labelText='Username'
-        inputName='username'
-        defaultValue={detail.username}
-      />
-      <FormInput
-        labelText='Password'
-        inputName='password'
-        defaultValue={detail.password}
-      />
-      <FormButton text='Update Cms Detail' />
-    </form>
+    </div>
   );
 }

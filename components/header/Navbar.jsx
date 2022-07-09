@@ -21,7 +21,7 @@ export default function Navbar() {
           </Link>
         </li>
         <li>
-          <Link href='/'>
+          <Link href='/clients/create'>
             <a>Create</a>
           </Link>
         </li>

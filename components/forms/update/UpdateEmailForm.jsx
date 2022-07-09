@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { useRef } from 'react';
 import sendFetch from '../../../utils/sendFetch';
+import DeleteDetailButton from '../../formSections/DeleteDetailButton';
 import FormButton from '../../formSections/FormButton';
 import FormInput from '../../formSections/FormInput';
 
@@ -34,27 +35,34 @@ export default function EmailForm({ detail }) {
   };
 
   return (
-    <form
-      onSubmit={handleFormSubmit}
-      ref={formRef}
-      className='mt-6 w-full border-b-2 pb-4'
-    >
-      <FormInput
-        labelText='Domain'
-        inputName='domain'
-        defaultValue={detail.domain}
+    <div className='pb-4 border-b-2'>
+      <form
+        onSubmit={handleFormSubmit}
+        ref={formRef}
+        className='mt-6 w-full pb-2'
+      >
+        <FormInput
+          labelText='Domain'
+          inputName='domain'
+          defaultValue={detail.domain}
+        />
+        <FormInput
+          labelText='Email'
+          inputName='email'
+          defaultValue={detail.email}
+        />
+        <FormInput
+          labelText='Password'
+          inputName='password'
+          defaultValue={detail.password}
+        />
+        <FormButton text='Update Email Detail' />
+      </form>
+      <DeleteDetailButton
+        text='Delete Email Detail'
+        detail='email'
+        id={detail.id}
       />
-      <FormInput
-        labelText='Email'
-        inputName='email'
-        defaultValue={detail.email}
-      />
-      <FormInput
-        labelText='Password'
-        inputName='password'
-        defaultValue={detail.password}
-      />
-      <FormButton text='Update Email Detail' />
-    </form>
+    </div>
   );
 }

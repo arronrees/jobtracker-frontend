@@ -52,10 +52,9 @@ export default function ClientSearch({ clients }) {
                 </div>
               ) : (
                 allClients.map((client) => (
-                  <Link href={`/clients/${client.id}`}>
+                  <Link href={`/clients/${client.id}`} key={client.id}>
                     <a>
                       <Combobox.Option
-                        key={client.id}
                         className={({ active }) =>
                           `relative cursor-pointer select-none py-2 pl-10 pr-4 ${
                             active ? 'bg-cyan-600 text-white' : 'text-cyan-900'

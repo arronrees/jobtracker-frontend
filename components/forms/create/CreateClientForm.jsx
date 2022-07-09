@@ -33,7 +33,6 @@ export default function ClientForm({ client }) {
         secondaryContactEmail: formValues.get('secondaryContactEmail')
           ? formValues.get('secondaryContactEmail')
           : null,
-        logo: formValues.get('logo') ? formValues.get('logo') : null,
         generalNotes: formValues.get('generalNotes')
           ? formValues.get('generalNotes')
           : null,

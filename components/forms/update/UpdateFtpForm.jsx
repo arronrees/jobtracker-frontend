@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { useRef } from 'react';
 import sendFetch from '../../../utils/sendFetch';
+import DeleteDetailButton from '../../formSections/DeleteDetailButton';
 import FormButton from '../../formSections/FormButton';
 import FormInput from '../../formSections/FormInput';
 
@@ -40,33 +41,36 @@ export default function FtpForm({ detail }) {
   };
 
   return (
-    <form
-      onSubmit={handleFormSubmit}
-      ref={formRef}
-      className='mt-6 border-b-2 pb-4'
-    >
-      <FormInput labelText='URL' inputName='url' defaultValue={detail.url} />
-      <FormInput
-        labelText='FTP Address'
-        inputName='ftpAddress'
-        defaultValue={detail.ftpAddress}
+    <div className='pb-4 border-b-2'>
+      <form onSubmit={handleFormSubmit} ref={formRef} className='mt-6 pb-2'>
+        <FormInput labelText='URL' inputName='url' defaultValue={detail.url} />
+        <FormInput
+          labelText='FTP Address'
+          inputName='ftpAddress'
+          defaultValue={detail.ftpAddress}
+        />
+        <FormInput
+          labelText='Host Directory'
+          inputName='hostDirectory'
+          defaultValue={detail.hostDirectory}
+        />
+        <FormInput
+          labelText='Login'
+          inputName='login'
+          defaultValue={detail.login}
+        />
+        <FormInput
+          labelText='Password'
+          inputName='password'
+          defaultValue={detail.password}
+        />
+        <FormButton text='Update FTP Detail' />
+      </form>
+      <DeleteDetailButton
+        text='Delete FTP Detail'
+        detail='ftp'
+        id={detail.id}
       />
-      <FormInput
-        labelText='Host Directory'
-        inputName='hostDirectory'
-        defaultValue={detail.hostDirectory}
-      />
-      <FormInput
-        labelText='Login'
-        inputName='login'
-        defaultValue={detail.login}
-      />
-      <FormInput
-        labelText='Password'
-        inputName='password'
-        defaultValue={detail.password}
-      />
-      <FormButton text='Update Ftp Detail' />
-    </form>
+    </div>
   );
 }

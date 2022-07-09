@@ -16,6 +16,10 @@ export default function GeneralInformation({ client, setShowForm }) {
         <p>{client.name}</p>
       </div>
       <div className='flex justify-between items-center gap-4 mb-1'>
+        <p className='font-semibold text-cyan-800'>Primary Contact Name:</p>
+        <p>{client.primaryContactName}</p>
+      </div>
+      <div className='flex justify-between items-center gap-4 mb-1'>
         <p className='font-semibold text-cyan-800'>Primary Contact Number:</p>
         <p>{client.primaryContactNumber}</p>
       </div>

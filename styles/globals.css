@@ -19,12 +19,12 @@ span {
   display: inline-block;
 }
 
-:root {
+/* :root {
   --primary-color: #d06fa1;
-}
+} */
 
 /* Override default focus colors for tailwindcss-forms https://github.com/tailwindlabs/tailwindcss-forms */
-[type='text']:focus,
+/* [type='text']:focus,
 [type='email']:focus,
 [type='url']:focus,
 [type='password']:focus,
@@ -43,4 +43,4 @@ textarea:focus,
 select:focus {
   --tw-ring-color: var(--primary-color);
   border-color: var(--primary-color);
-}
+} */
