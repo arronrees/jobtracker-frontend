@@ -15,15 +15,11 @@ export default function FtpForm({ client }) {
     const formValues = new FormData(formRef.current);
 
     const formDetails = {
-      url: formValues.get('url') ? formValues.get('url') : null,
-      ftpAddress: formValues.get('ftpAddress')
-        ? formValues.get('ftpAddress')
-        : null,
-      hostDirectory: formValues.get('hostDirectory')
-        ? formValues.get('hostDirectory')
-        : null,
-      login: formValues.get('login') ? formValues.get('login') : null,
-      password: formValues.get('password') ? formValues.get('password') : null,
+      url: formValues.get('url'),
+      ftpAddress: formValues.get('ftpAddress'),
+      hostDirectory: formValues.get('hostDirectory'),
+      login: formValues.get('login'),
+      password: formValues.get('password'),
     };
 
     const { data, error } = await sendFetch(

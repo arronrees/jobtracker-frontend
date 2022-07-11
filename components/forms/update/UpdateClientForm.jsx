@@ -17,40 +17,21 @@ export default function ClientForm({ client }) {
 
     const formDetails = {
       client: {
-        name: formValues.get('name') ? formValues.get('name') : null,
-        primaryContactName: formValues.get('primaryContactName')
-          ? formValues.get('primaryContactName')
-          : null,
-        primaryContactNumber: formValues.get('primaryContactNumber')
-          ? formValues.get('primaryContactNumber')
-          : null,
-        primaryContactEmail: formValues.get('primaryContactEmail')
-          ? formValues.get('primaryContactEmail')
-          : null,
-        secondaryContactNumber: formValues.get('secondaryContactNumber')
-          ? formValues.get('secondaryContactNumber')
-          : null,
-        secondaryContactEmail: formValues.get('secondaryContactEmail')
-          ? formValues.get('secondaryContactEmail')
-          : null,
-        logo: formValues.get('logo') ? formValues.get('logo') : null,
-        generalNotes: formValues.get('generalNotes')
-          ? formValues.get('generalNotes')
-          : null,
+        name: formValues.get('name'),
+        primaryContactName: formValues.get('primaryContactName'),
+        primaryContactNumber: formValues.get('primaryContactNumber'),
+        primaryContactEmail: formValues.get('primaryContactEmail'),
+        secondaryContactNumber: formValues.get('secondaryContactNumber'),
+        secondaryContactEmail: formValues.get('secondaryContactEmail'),
+        generalNotes: formValues.get('generalNotes'),
       },
       address: {
-        addressLine1: formValues.get('addressLine1')
-          ? formValues.get('addressLine1')
-          : null,
-        addressLine2: formValues.get('addressLine2')
-          ? formValues.get('addressLine2')
-          : null,
-        town: formValues.get('town') ? formValues.get('town') : null,
-        county: formValues.get('county') ? formValues.get('county') : null,
-        postCode: formValues.get('postCode')
-          ? formValues.get('postCode')
-          : null,
-        country: formValues.get('country') ? formValues.get('country') : null,
+        addressLine1: formValues.get('addressLine1'),
+        addressLine2: formValues.get('addressLine2'),
+        town: formValues.get('town'),
+        county: formValues.get('county'),
+        postCode: formValues.get('postCode'),
+        country: formValues.get('country'),
       },
     };
 

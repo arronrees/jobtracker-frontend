@@ -16,9 +16,9 @@ export default function EmailForm({ detail }) {
     const formValues = new FormData(formRef.current);
 
     const formDetails = {
-      domain: formValues.get('domain') ? formValues.get('domain') : null,
-      email: formValues.get('email') ? formValues.get('email') : null,
-      password: formValues.get('password') ? formValues.get('password') : null,
+      domain: formValues.get('domain'),
+      email: formValues.get('email'),
+      password: formValues.get('password'),
     };
 
     const { data, error } = await sendFetch(

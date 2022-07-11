@@ -15,12 +15,10 @@ export default function DatabaseForm({ client }) {
     const formValues = new FormData(formRef.current);
 
     const formDetails = {
-      url: formValues.get('url') ? formValues.get('url') : null,
-      databaseName: formValues.get('databaseName')
-        ? formValues.get('databaseName')
-        : null,
-      username: formValues.get('username') ? formValues.get('username') : null,
-      password: formValues.get('password') ? formValues.get('password') : null,
+      url: formValues.get('url'),
+      databaseName: formValues.get('databaseName'),
+      username: formValues.get('username'),
+      password: formValues.get('password'),
     };
 
     const { data, error } = await sendFetch(

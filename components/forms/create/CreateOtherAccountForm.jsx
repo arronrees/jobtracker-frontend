@@ -16,11 +16,11 @@ export default function OtherAccountForm({ client }) {
     const formValues = new FormData(formRef.current);
 
     const formDetails = {
-      name: formValues.get('name') ? formValues.get('name') : null,
-      username: formValues.get('username') ? formValues.get('username') : null,
-      email: formValues.get('email') ? formValues.get('email') : null,
-      password: formValues.get('password') ? formValues.get('password') : null,
-      notes: formValues.get('notes') ? formValues.get('notes') : null,
+      name: formValues.get('name'),
+      username: formValues.get('username'),
+      email: formValues.get('email'),
+      password: formValues.get('password'),
+      notes: formValues.get('notes'),
     };
 
     const { data, error } = await sendFetch(

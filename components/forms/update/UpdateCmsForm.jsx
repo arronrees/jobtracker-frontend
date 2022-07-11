@@ -16,10 +16,10 @@ export default function CmsForm({ detail }) {
     const formValues = new FormData(formRef.current);
 
     const formDetails = {
-      url: formValues.get('url') ? formValues.get('url') : null,
-      email: formValues.get('email') ? formValues.get('email') : null,
-      username: formValues.get('username') ? formValues.get('username') : null,
-      password: formValues.get('password') ? formValues.get('password') : null,
+      url: formValues.get('url'),
+      email: formValues.get('email'),
+      username: formValues.get('username'),
+      password: formValues.get('password'),
     };
 
     const { data, error } = await sendFetch(
