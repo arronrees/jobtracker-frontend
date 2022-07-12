@@ -4,6 +4,7 @@ import CreateDatabaseForm from '../forms/create/CreateDatabaseForm';
 import CreateEmailForm from '../forms/create/CreateEmailForm';
 import CreateFtpForm from '../forms/create/CreateFtpForm';
 import CreateOtherAccountForm from '../forms/create/CreateOtherAccountForm';
+import CreateCmsForm from '../forms/create/CreateCmsForm';
 
 export default function FormsToShow({ client, setShowForm, showForm }) {
   return (
