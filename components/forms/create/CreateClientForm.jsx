@@ -17,7 +17,7 @@ export default function ClientForm({ client }) {
 
     const formDetails = {
       client: {
-        name: formValues.get('name') ? formValues.get('name') : '',
+        name: formValues.get('name'),
         primaryContactName: formValues.get('primaryContactName'),
         primaryContactNumber: formValues.get('primaryContactNumber'),
         primaryContactEmail: formValues.get('primaryContactEmail'),

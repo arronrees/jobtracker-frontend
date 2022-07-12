@@ -3,6 +3,7 @@ import GeneralInformation from '../../components/client/GeneralInformation';
 import DetailSelection from '../../components/client/DetailSelection';
 import DetailSelectionForms from '../../components/client/DetailSelectionForms';
 import FormsToShow from '../../components/client/FormsToShow';
+import CreateNewClientJob from '../../components/forms/create/CreateNewClientJob';
 
 export default function Client({ client }) {
   const [showForm, setShowForm] = useState(null);
@@ -31,6 +32,21 @@ export default function Client({ client }) {
           setShowForm={setShowForm}
           showForm={showForm}
         />
+
+        <div>
+          {client.jobs &&
+            client.jobs.map((job) => (
+              <div key={job.id}>
+                <p>Title: {job.title}</p>
+                <p>Completed: {job.completed ? 'True' : 'False'}</p>
+              </div>
+            ))}
+        </div>
+
+        <div>
+          <p>Create new job</p>
+          <CreateNewClientJob client={client} />
+        </div>
       </section>
     </div>
   );
