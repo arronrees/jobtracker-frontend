@@ -11,7 +11,7 @@ export default function GeneralInformation({ client, setShowForm }) {
           Edit Details:
         </button>
       </div>
-      <div className='flex justify-between items-center gap-4 mb-1'>
+      <div className='flex justify-between items-center gap-4 mb-4'>
         <p className='font-semibold text-cyan-800'>Client Name:</p>
         <p>{client.name}</p>
       </div>
@@ -31,9 +31,33 @@ export default function GeneralInformation({ client, setShowForm }) {
         <p className='font-semibold text-cyan-800'>Secondary Contact Number:</p>
         <p>{client.secondaryContactNumber}</p>
       </div>
-      <div className='flex justify-between items-center gap-4 mb-1'>
+      <div className='flex justify-between items-center gap-4 mb-4'>
         <p className='font-semibold text-cyan-800'>Secondary Contact Email:</p>
         <p>{client.secondaryContactEmail}</p>
+      </div>
+      <div className='flex justify-between items-center gap-4 mb-1'>
+        <p className='font-semibold text-cyan-800 mb-1'>Address Line 1:</p>
+        <p>{client.address.addressLine1}</p>
+      </div>
+      <div className='flex justify-between items-center gap-4 mb-1'>
+        <p className='font-semibold text-cyan-800 mb-1'>Address Line 2:</p>
+        <p>{client.address.addressLine2}</p>
+      </div>
+      <div className='flex justify-between items-center gap-4 mb-1'>
+        <p className='font-semibold text-cyan-800 mb-1'>Town:</p>
+        <p>{client.address.town}</p>
+      </div>
+      <div className='flex justify-between items-center gap-4 mb-1'>
+        <p className='font-semibold text-cyan-800 mb-1'>County:</p>
+        <p>{client.address.county}</p>
+      </div>
+      <div className='flex justify-between items-center gap-4 mb-1'>
+        <p className='font-semibold text-cyan-800 mb-1'>Postcode:</p>
+        <p>{client.address.postCode}</p>
+      </div>
+      <div className='flex justify-between items-center gap-4 mb-4'>
+        <p className='font-semibold text-cyan-800 mb-1'>Country:</p>
+        <p>{client.address.country}</p>
       </div>
       <div className='mb-1'>
         <p className='font-semibold text-cyan-800 mb-1'>General Notes:</p>
