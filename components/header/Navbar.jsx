@@ -21,8 +21,13 @@ export default function Navbar() {
           </Link>
         </li>
         <li>
+          <Link href='/clients'>
+            <a>All Clients</a>
+          </Link>
+        </li>
+        <li>
           <Link href='/clients/create'>
-            <a>Create</a>
+            <a>Create New Client</a>
           </Link>
         </li>
       </ul>
