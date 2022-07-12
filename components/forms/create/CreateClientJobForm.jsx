@@ -4,7 +4,7 @@ import sendFetch from '../../../utils/sendFetch';
 import FormButton from '../../formSections/FormButton';
 import FormInput from '../../formSections/FormInput';
 
-export default function CreateNewClientJob({ client }) {
+export default function CreateClientJobForm({ client }) {
   const router = useRouter();
 
   const formRef = useRef(null);
@@ -16,7 +16,8 @@ export default function CreateNewClientJob({ client }) {
 
     const formDetails = {
       title: formValues.get('title'),
-      completed: formValues.get('completed') ? true : false,
+      status: formValues.get('status'),
+      amount: formValues.get('amount'),
     };
 
     const { data, error } = await sendFetch(
@@ -34,7 +35,14 @@ export default function CreateNewClientJob({ client }) {
   return (
     <form ref={formRef} onSubmit={handleFormSubmit}>
       <FormInput labelText='Job Title' inputName='title' />
-      <input type='checkbox' name='completed' id='completed' value={true} />
+      <div>
+        <select name='status' id='status'>
+          <option value='quoted'>Quoted</option>
+          <option value='in-progress'>In Progress</option>
+          <option value='completed'>Completed - To Invoice</option>
+        </select>
+      </div>
+      <FormInput labelText='Amount' inputName='amount' />
       <FormButton text='Create New Job' />
     </form>
   );

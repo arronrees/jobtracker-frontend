@@ -5,6 +5,7 @@ import CreateEmailForm from '../forms/create/CreateEmailForm';
 import CreateFtpForm from '../forms/create/CreateFtpForm';
 import CreateOtherAccountForm from '../forms/create/CreateOtherAccountForm';
 import CreateCmsForm from '../forms/create/CreateCmsForm';
+import CreateClientJobForm from '../forms/create/CreateClientJobForm';
 
 export default function FormsToShow({ client, setShowForm, showForm }) {
   return (
@@ -56,6 +57,14 @@ export default function FormsToShow({ client, setShowForm, showForm }) {
           setShowForm={setShowForm}
         >
           <CreateOtherAccountForm client={client} />
+        </ClientFormWrapper>
+      )}
+      {showForm === 'create-job' && (
+        <ClientFormWrapper
+          titleText={`Create new Job for ${client.name}`}
+          setShowForm={setShowForm}
+        >
+          <CreateClientJobForm client={client} />
         </ClientFormWrapper>
       )}
     </>

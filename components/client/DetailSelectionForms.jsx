@@ -18,7 +18,7 @@ export default function DetailSelectionForms({
           ))}
           <button
             type='button'
-            className='inline-block text-center font-medium bg-orange-600 text-white px-4 py-1 rounded-md transition duration-300 hover:bg-orange-500 focus:ring-2 ring-inbg-orange-600 ring-offset-2 focus:outline-none mt-6'
+            className='inline-block text-center font-medium bg-orange-600 text-white px-4 py-1 rounded-md transition duration-300 hover:bg-orange-500 focus:ring-2 ring-inbg-orange-600 ring-offset-2 focus:outline-none mt-4'
             onClick={() => setShowForm('create-ftp')}
           >
             Create New Ftp Details
@@ -33,7 +33,7 @@ export default function DetailSelectionForms({
           ))}
           <button
             type='button'
-            className='inline-block text-center font-medium bg-orange-600 text-white px-4 py-1 rounded-md transition duration-300 hover:bg-orange-500 focus:ring-2 ring-inbg-orange-600 ring-offset-2 focus:outline-none mt-6'
+            className='inline-block text-center font-medium bg-orange-600 text-white px-4 py-1 rounded-md transition duration-300 hover:bg-orange-500 focus:ring-2 ring-inbg-orange-600 ring-offset-2 focus:outline-none mt-4'
             onClick={() => setShowForm('create-database')}
           >
             Create New Database Details
@@ -48,7 +48,7 @@ export default function DetailSelectionForms({
           ))}
           <button
             type='button'
-            className='inline-block text-center font-medium bg-orange-600 text-white px-4 py-1 rounded-md transition duration-300 hover:bg-orange-500 focus:ring-2 ring-inbg-orange-600 ring-offset-2 focus:outline-none mt-6'
+            className='inline-block text-center font-medium bg-orange-600 text-white px-4 py-1 rounded-md transition duration-300 hover:bg-orange-500 focus:ring-2 ring-inbg-orange-600 ring-offset-2 focus:outline-none mt-4'
             onClick={() => setShowForm('create-cms')}
           >
             Create New CMS Details
@@ -63,7 +63,7 @@ export default function DetailSelectionForms({
           ))}
           <button
             type='button'
-            className='inline-block text-center font-medium bg-orange-600 text-white px-4 py-1 rounded-md transition duration-300 hover:bg-orange-500 focus:ring-2 ring-inbg-orange-600 ring-offset-2 focus:outline-none mt-6'
+            className='inline-block text-center font-medium bg-orange-600 text-white px-4 py-1 rounded-md transition duration-300 hover:bg-orange-500 focus:ring-2 ring-inbg-orange-600 ring-offset-2 focus:outline-none mt-4'
             onClick={() => setShowForm('create-email')}
           >
             Create New Email Details
@@ -78,7 +78,7 @@ export default function DetailSelectionForms({
           ))}
           <button
             type='button'
-            className='inline-block text-center font-medium bg-orange-600 text-white px-4 py-1 rounded-md transition duration-300 hover:bg-orange-500 focus:ring-2 ring-inbg-orange-600 ring-offset-2 focus:outline-none mt-6'
+            className='inline-block text-center font-medium bg-orange-600 text-white px-4 py-1 rounded-md transition duration-300 hover:bg-orange-500 focus:ring-2 ring-inbg-orange-600 ring-offset-2 focus:outline-none mt-4'
             onClick={() => setShowForm('create-other')}
           >
             Create New Other Account Details
