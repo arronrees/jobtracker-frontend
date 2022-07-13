@@ -25,7 +25,7 @@ export default function UpdateClientJobForm({ client, currentJob }) {
     };
 
     const { data, error } = await sendFetch(
-      `http://localhost:4000/api/clients/client-job/${currentJob.id}`,
+      `http://localhost:4000/api/jobs/${currentJob.id}`,
       'PUT',
       formDetails
     );
@@ -49,29 +49,25 @@ export default function UpdateClientJobForm({ client, currentJob }) {
         defaultValue={currentJob.title}
       />
       <FormSelect labelText='Status' inputName='status'>
-        {currentJob.status === 'quote' && (
+        {currentJob.status === 'Quote' && (
           <>
-            <option value='quote' selected>
-              Quote
-            </option>
-            <option value='in-progress'>In Progress</option>
-            <option value='complete'>Completed</option>
+            <option value='Quote'>Quote</option>
+            <option value='In Progress'>In Progress</option>
+            <option value='Complete'>Completed</option>
           </>
         )}
-        {currentJob.status === 'in-progress' && (
+        {currentJob.status === 'In Progress' && (
           <>
-            <option value='in-progress' selected>
-              In Progress
-            </option>
-            <option value='in-progress'>Quote</option>
-            <option value='complete'>Completed</option>
+            <option value='In Progress'>In Progress</option>
+            <option value='In Progress'>Quote</option>
+            <option value='Complete'>Completed</option>
           </>
         )}
-        {currentJob.status === 'complete' && (
+        {currentJob.status === 'Complete' && (
           <>
-            <option value='complete'>Completed</option>
-            <option value='quote'>Quote</option>
-            <option value='in-progress'>In Progress</option>
+            <option value='Complete'>Completed</option>
+            <option value='Quote'>Quote</option>
+            <option value='In Progress'>In Progress</option>
           </>
         )}
       </FormSelect>
@@ -86,9 +82,27 @@ export default function UpdateClientJobForm({ client, currentJob }) {
         defaultValue={currentJob.includingVat}
       />
       <FormSelect labelText='Department' inputName='department'>
-        <option value='web'>Web</option>
-        <option value='print'>Print</option>
-        <option value='other'>Other</option>
+        {currentJob.department === 'web' && (
+          <>
+            <option value='web'>Web</option>
+            <option value='print'>Print</option>
+            <option value='other'>Other</option>
+          </>
+        )}
+        {currentJob.department === 'print' && (
+          <>
+            <option value='print'>Print</option>
+            <option value='web'>Web</option>
+            <option value='other'>Other</option>
+          </>
+        )}
+        {currentJob.department === 'other' && (
+          <>
+            <option value='other'>Other</option>
+            <option value='web'>Web</option>
+            <option value='print'>Print</option>
+          </>
+        )}
       </FormSelect>
       <FormButton text='Update Job' />
     </form>

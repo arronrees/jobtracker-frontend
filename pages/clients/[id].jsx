@@ -57,5 +57,5 @@ export async function getServerSideProps({ params }) {
   const res = await fetch(`http://localhost:4000/api/clients/${id}`);
   const data = await res.json();
 
-  return { props: { client: data } };
+  return { props: { client: data.data } };
 }

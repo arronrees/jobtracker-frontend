@@ -25,7 +25,7 @@ export default function CreateClientJobForm({ client }) {
     };
 
     const { data, error } = await sendFetch(
-      `http://localhost:4000/api/clients/client-job/${client.id}`,
+      `http://localhost:4000/api/jobs/${client.id}`,
       'POST',
       formDetails
     );
@@ -40,16 +40,16 @@ export default function CreateClientJobForm({ client }) {
     <form ref={formRef} onSubmit={handleFormSubmit}>
       <FormInput labelText='Job Title' inputName='title' />
       <FormSelect labelText='Status' inputName='status'>
-        <option value='quote'>Quote</option>
-        <option value='in-progress'>In Progress</option>
-        <option value='complete'>Completed</option>
+        <option value='Quote'>Quote</option>
+        <option value='In Progress'>In Progress</option>
+        <option value='Complete'>Completed</option>
       </FormSelect>
       <FormInput labelText='Cost' inputName='cost' />
       <FormCheckbox labelText='Including VAT' inputName='includingVat' />
       <FormSelect labelText='Department' inputName='department'>
-        <option value='web'>Web</option>
-        <option value='print'>Print</option>
-        <option value='other'>Other</option>
+        <option value='Web'>Web</option>
+        <option value='Print'>Print</option>
+        <option value='Other'>Other</option>
       </FormSelect>
       <FormButton text='Create New Job' />
     </form>

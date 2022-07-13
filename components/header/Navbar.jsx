@@ -8,7 +8,7 @@ export default function Navbar() {
   useEffect(() => {
     fetch('http://localhost:4000/api/clients/search')
       .then((res) => res.json())
-      .then((data) => setClients(data))
+      .then((data) => setClients(data.data))
       .catch((err) => console.log('Error: ', err));
   }, []);
 
@@ -28,6 +28,11 @@ export default function Navbar() {
         <li>
           <Link href='/clients/create'>
             <a>Create New Client</a>
+          </Link>
+        </li>
+        <li>
+          <Link href='/jobs'>
+            <a>Jobs</a>
           </Link>
         </li>
       </ul>
