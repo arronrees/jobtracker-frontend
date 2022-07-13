@@ -48,7 +48,7 @@ export default function JobsTable({ client, setShowForm, showForm }) {
                   scope='row'
                   className='py-4 px-6 text-gray-900 whitespace-nowrap font-medium '
                 >
-                  <Link href='/'>
+                  <Link href={`/jobs/${job.id}`}>
                     <a className='hover:text-indigo-400 hover:border-indigo-400 border-b border-transparent transition duration-200 cursor-pointer'>
                       {job.title}
                     </a>

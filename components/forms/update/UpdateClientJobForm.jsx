@@ -82,25 +82,25 @@ export default function UpdateClientJobForm({ client, currentJob }) {
         defaultValue={currentJob.includingVat}
       />
       <FormSelect labelText='Department' inputName='department'>
-        {currentJob.department === 'web' && (
+        {currentJob.department === 'Web' && (
           <>
-            <option value='web'>Web</option>
+            <option value='Web'>Web</option>
             <option value='print'>Print</option>
-            <option value='other'>Other</option>
+            <option value='Other'>Other</option>
           </>
         )}
-        {currentJob.department === 'print' && (
+        {currentJob.department === 'Print' && (
           <>
-            <option value='print'>Print</option>
-            <option value='web'>Web</option>
-            <option value='other'>Other</option>
+            <option value='Print'>Print</option>
+            <option value='Web'>Web</option>
+            <option value='Other'>Other</option>
           </>
         )}
-        {currentJob.department === 'other' && (
+        {currentJob.department === 'Other' && (
           <>
-            <option value='other'>Other</option>
-            <option value='web'>Web</option>
-            <option value='print'>Print</option>
+            <option value='Other'>Other</option>
+            <option value='Web'>Web</option>
+            <option value='Print'>Print</option>
           </>
         )}
       </FormSelect>
