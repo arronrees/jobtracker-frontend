@@ -1,0 +1,75 @@
+import { useState } from 'react';
+import Link from 'next/link';
+import UpdateClientJobForm from '../forms/update/UpdateClientJobForm';
+import ClientFormWrapper from './ClientFormWrapper';
+
+export default function JobsTable({ client, setShowForm, showForm }) {
+  const [jobs, setJobs] = useState(client.jobs);
+  const [currentJob, setCurrentJob] = useState(null);
+
+  return (
+    <>
+      <p className='font-bold border-b-2 pb-1 mb-2 mt-10 w-max'>Client Jobs</p>
+      <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400'>
+        <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
+          <tr>
+            <th scope='col' className='cursor-pointer py-3 px-6'>
+              Title
+            </th>
+            <th scope='col' className='cursor-pointer py-3 px-6'>
+              User
+            </th>
+            <th scope='col' className='cursor-pointer py-3 px-6'>
+              Amount
+            </th>
+            <th scope='col' className='cursor-pointer py-3 px-6'>
+              Status
+            </th>
+            <th scope='col' className='cursor-pointer py-3 px-6'>
+              Created At
+            </th>
+            <th scope='col' className='py-3 px-6'></th>
+          </tr>
+        </thead>
+        <tbody>
+          {jobs.length > 0 &&
+            jobs.map((job) => (
+              <tr
+                key={job.id}
+                className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 last-of-type:border-b-2'
+              >
+                <th
+                  scope='row'
+                  className='py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white'
+                >
+                  {job.title}
+                </th>
+                <td className='py-4 px-6'></td>
+                <td className='py-4 px-6'>£{job.amount}</td>
+                <td className='py-4 px-6'>{job.status}</td>
+                <td className='py-4 px-6'>{job.createdAt}</td>
+                <td className='py-4 px-6 text-right'>
+                  <button
+                    type='button'
+                    className='font-medium text-blue-600 dark:text-blue-500 hover:underline'
+                    onClick={() => {
+                      setCurrentJob(job);
+                      setShowForm('update-job');
+                    }}
+                  >
+                    Edit
+                  </button>
+                </td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
+
+      {showForm === 'update-job' && (
+        <ClientFormWrapper titleText='Update Job' setShowForm={setShowForm}>
+          <UpdateClientJobForm client={client} currentJob={currentJob} />
+        </ClientFormWrapper>
+      )}
+    </>
+  );
+}
