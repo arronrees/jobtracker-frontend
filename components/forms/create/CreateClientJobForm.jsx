@@ -2,7 +2,9 @@ import { useRouter } from 'next/router';
 import { useRef } from 'react';
 import sendFetch from '../../../utils/sendFetch';
 import FormButton from '../../formSections/FormButton';
+import FormCheckbox from '../../formSections/FormCheckbox';
 import FormInput from '../../formSections/FormInput';
+import FormSelect from '../../formSections/FormSelect';
 
 export default function CreateClientJobForm({ client }) {
   const router = useRouter();
@@ -17,7 +19,9 @@ export default function CreateClientJobForm({ client }) {
     const formDetails = {
       title: formValues.get('title'),
       status: formValues.get('status'),
-      amount: formValues.get('amount'),
+      cost: formValues.get('cost'),
+      includingVat: formValues.get('includingVat'),
+      department: formValues.get('department'),
     };
 
     const { data, error } = await sendFetch(
@@ -35,14 +39,18 @@ export default function CreateClientJobForm({ client }) {
   return (
     <form ref={formRef} onSubmit={handleFormSubmit}>
       <FormInput labelText='Job Title' inputName='title' />
-      <div>
-        <select name='status' id='status'>
-          <option value='quoted'>Quoted</option>
-          <option value='in-progress'>In Progress</option>
-          <option value='completed'>Completed - To Invoice</option>
-        </select>
-      </div>
-      <FormInput labelText='Amount' inputName='amount' />
+      <FormSelect labelText='Status' inputName='status'>
+        <option value='quote'>Quote</option>
+        <option value='in-progress'>In Progress</option>
+        <option value='complete'>Completed</option>
+      </FormSelect>
+      <FormInput labelText='Cost' inputName='cost' />
+      <FormCheckbox labelText='Including VAT' inputName='includingVat' />
+      <FormSelect labelText='Department' inputName='department'>
+        <option value='web'>Web</option>
+        <option value='print'>Print</option>
+        <option value='other'>Other</option>
+      </FormSelect>
       <FormButton text='Create New Job' />
     </form>
   );
