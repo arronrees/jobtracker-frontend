@@ -1,9 +1,9 @@
-import Link from 'next/link';
+import UpdateClientJobForm from '../../components/forms/update/UpdateClientJobForm';
 
 export default function Job({ job }) {
   return (
     <div className='p-6'>
-      <p>{job.title}</p>
+      <UpdateClientJobForm currentJob={job} />
     </div>
   );
 }

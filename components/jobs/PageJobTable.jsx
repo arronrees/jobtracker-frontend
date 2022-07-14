@@ -98,6 +98,13 @@ export default function PageJobTable({ jobs, setJobs }) {
           >
             Created At
           </th>
+          <th
+            scope='col'
+            className='cursor-pointer py-3 px-4'
+            onClick={() => handleSort('completedAt')}
+          >
+            Completed At
+          </th>
           <th scope='col' className='py-3 px-4'></th>
         </tr>
       </thead>
@@ -135,6 +142,7 @@ export default function PageJobTable({ jobs, setJobs }) {
               </td>
               <td className='p-4'>{job.department}</td>
               <td className='p-4'>{job.createdAt}</td>
+              <td className='p-4'>{job.completedDate}</td>
               <td className='p-4 text-right'>
                 <Link href={`/jobs/${job.id}`}>
                   <a className='font-medium text-indigo-600 hover:border-indigo-500 border-b border-transparent transition duration-200'>

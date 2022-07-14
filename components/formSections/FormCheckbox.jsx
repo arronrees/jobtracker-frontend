@@ -8,7 +8,7 @@ export default function FormCheckbox({ labelText, inputName, defaultValue }) {
         >
           <span className='text-gray-500 inline-block'>{labelText}:</span>
           <input
-            className='block rounded-md border-gray-400 bg-transparent font-bold text-cyan-700 p-2 leading-none text-xs col-span-2 ml-auto'
+            className='block rounded-md border-gray-300 bg-transparent font-bold text-cyan-700 p-3 leading-none text-xs col-span-2 ml-auto bg-gray-50'
             type='checkbox'
             name={inputName}
             id={inputName}
@@ -27,7 +27,7 @@ export default function FormCheckbox({ labelText, inputName, defaultValue }) {
         >
           <span className='text-gray-500 inline-block'>{labelText}:</span>
           <input
-            className='block rounded-md border-gray-400 bg-transparent font-bold text-cyan-700 p-2 leading-none text-xs col-span-2 ml-auto'
+            className='block rounded-md border-gray-300 bg-transparent font-bold text-cyan-700 p-3 leading-none text-xs col-span-2 ml-auto bg-gray-50'
             type='checkbox'
             name={inputName}
             id={inputName}

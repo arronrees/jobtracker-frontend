@@ -5,8 +5,9 @@ import FormButton from '../../formSections/FormButton';
 import FormInput from '../../formSections/FormInput';
 import FormCheckbox from '../../formSections/FormCheckbox';
 import FormSelect from '../../formSections/FormSelect';
+import FormDate from '../../formSections/FormDate';
 
-export default function UpdateClientJobForm({ client, currentJob }) {
+export default function UpdateClientJobForm({ currentJob }) {
   const router = useRouter();
 
   const formRef = useRef(null);
@@ -22,6 +23,8 @@ export default function UpdateClientJobForm({ client, currentJob }) {
       cost: formValues.get('cost'),
       includingVat: formValues.get('includingVat') ? true : false,
       department: formValues.get('department'),
+      type: formValues.get('type'),
+      completedDate: formValues.get('completedDate'),
     };
 
     const { data, error } = await sendFetch(
@@ -85,7 +88,7 @@ export default function UpdateClientJobForm({ client, currentJob }) {
         {currentJob.department === 'Web' && (
           <>
             <option value='Web'>Web</option>
-            <option value='print'>Print</option>
+            <option value='Print'>Print</option>
             <option value='Other'>Other</option>
           </>
         )}
@@ -104,6 +107,13 @@ export default function UpdateClientJobForm({ client, currentJob }) {
           </>
         )}
       </FormSelect>
+
+      <FormDate
+        labelText='Completed At'
+        inputName='completedDate'
+        defaultValue={currentJob.completedDate}
+      />
+
       <FormButton text='Update Job' />
     </form>
   );

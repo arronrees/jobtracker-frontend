@@ -42,7 +42,7 @@ export default function ClientForm({ client }) {
     );
 
     if (data) {
-      router.reload();
+      router.push(`/clients/${data.data.id}`);
     } else {
       console.log(error);
     }

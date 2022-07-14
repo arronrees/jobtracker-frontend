@@ -26,10 +26,13 @@ export async function getServerSideProps() {
   const res = await fetch('http://localhost:4000/api/jobs');
   const data = await res.json();
 
+  const allJobs = data.data.allJobs.length > 0 ? data.data.allJobs : null;
+  const clients = data.data.allClients.length > 0 ? data.data.allClients : null;
+
   return {
     props: {
-      allJobs: data.data.allJobs,
-      clients: data.data.allClients,
+      allJobs,
+      clients,
     },
   };
 }
