@@ -11,7 +11,21 @@ export default function PageJobTable({ jobs, setJobs }) {
     let toSort = [...jobs];
 
     if (jobs.length > 1) {
-      if (typeof jobs[0][sorter] === 'number' || sorter === 'includingVat') {
+      if (sorter === 'completedDate' || sorter === 'createdAt') {
+        if (currentSort === sorter) {
+          toSort = toSort.sort(
+            (a, b) => new Date(b[sorter]) - new Date(a[sorter])
+          );
+          setCurrentSort('');
+        } else {
+          toSort = toSort.sort(
+            (a, b) => new Date(a[sorter]) - new Date(b[sorter])
+          );
+        }
+      } else if (
+        typeof jobs[0][sorter] === 'number' ||
+        sorter === 'includingVat'
+      ) {
         if (currentSort === sorter) {
           toSort = toSort.sort((a, b) => b[sorter] - a[sorter]);
           setCurrentSort('');
@@ -101,7 +115,7 @@ export default function PageJobTable({ jobs, setJobs }) {
           <th
             scope='col'
             className='cursor-pointer py-3 px-4'
-            onClick={() => handleSort('completedAt')}
+            onClick={() => handleSort('completedDate')}
           >
             Completed At
           </th>
