@@ -1,35 +1,104 @@
 import Link from 'next/link';
+import { useState } from 'react';
+import { statusColours } from '../../constants';
 
-export default function PageJobTable({ jobs }) {
+export default function PageJobTable({ jobs, setJobs }) {
+  const [currentSort, setCurrentSort] = useState('');
+
+  const handleSort = (sorter) => {
+    setCurrentSort(sorter);
+
+    let toSort = [...jobs];
+
+    if (jobs.length > 1) {
+      if (typeof jobs[0][sorter] === 'number' || sorter === 'includingVat') {
+        if (currentSort === sorter) {
+          toSort = toSort.sort((a, b) => b[sorter] - a[sorter]);
+          setCurrentSort('');
+        } else {
+          toSort = toSort.sort((a, b) => a[sorter] - b[sorter]);
+        }
+      } else if (typeof jobs[0][sorter] === 'string') {
+        if (currentSort === sorter) {
+          toSort = toSort.sort((a, b) =>
+            ('' + b[sorter]).localeCompare(a[sorter])
+          );
+
+          setCurrentSort('');
+        } else {
+          toSort = toSort.sort((a, b) =>
+            ('' + a[sorter]).localeCompare(b[sorter])
+          );
+        }
+      }
+
+      setJobs(toSort);
+    }
+
+    return;
+  };
+
   return (
     <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400 overflow-y-auto'>
       <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
         <tr>
-          <th scope='col' className='cursor-pointer py-3 px-6'>
+          <th
+            scope='col'
+            className='cursor-pointer py-3 px-4'
+            onClick={() => handleSort('title')}
+          >
             Title
           </th>
-          <th scope='col' className='cursor-pointer py-3 px-6'>
+          <th
+            scope='col'
+            className='cursor-pointer py-3 px-4'
+            onClick={() => handleSort('user')}
+          >
             User
           </th>
-          <th scope='col' className='cursor-pointer py-3 px-6'>
+          <th
+            scope='col'
+            className='cursor-pointer py-3 px-4'
+            onClick={() => handleSort('client')}
+          >
             Client
           </th>
-          <th scope='col' className='cursor-pointer py-3 px-6'>
+          <th
+            scope='col'
+            className='cursor-pointer py-3 px-4'
+            onClick={() => handleSort('cost')}
+          >
             Cost
           </th>
-          <th scope='col' className='cursor-pointer py-3 px-6'>
+          <th
+            scope='col'
+            className='cursor-pointer py-3 px-4'
+            onClick={() => handleSort('includingVat')}
+          >
             Including VAT
           </th>
-          <th scope='col' className='cursor-pointer py-3 px-6'>
+          <th
+            scope='col'
+            className='cursor-pointer py-3 px-4'
+            onClick={() => handleSort('status')}
+          >
             Status
           </th>
-          <th scope='col' className='cursor-pointer py-3 px-6'>
+          <th
+            scope='col'
+            className='cursor-pointer py-3 px-4'
+            onClick={() => handleSort('department')}
+          >
             Department
           </th>
-          <th scope='col' className='cursor-pointer py-3 px-6'>
+          <th
+            scope='col'
+            className='cursor-pointer py-3 px-4'
+            onClick={() => handleSort('createdAt')}
+          >
             Created At
           </th>
-          <th scope='col' className='py-3 px-6'></th>
+          <th scope='col' className='py-3 px-4'></th>
         </tr>
       </thead>
       <tbody>
@@ -41,34 +110,37 @@ export default function PageJobTable({ jobs }) {
             >
               <th
                 scope='row'
-                className='py-4 px-6 text-gray-900 whitespace-nowrap font-medium '
+                className='p-4 text-gray-900 whitespace-nowrap font-medium '
               >
-                <Link href={`/jobs/${job.id}`}>
-                  <a className='hover:text-indigo-400 hover:border-indigo-400 border-b border-transparent transition duration-200 cursor-pointer'>
-                    {job.title}
-                  </a>
-                </Link>
+                {job.title}
               </th>
-              <td className='py-4 px-6'></td>
-              <td className='py-4 px-6'>
+              <td className='p-4'></td>
+              <td className='p-4'>
                 <Link href={`/clients/${job.client.id}`}>
                   <a className='hover:text-indigo-400 hover:border-indigo-400 border-b border-transparent transition duration-200 cursor-pointer'>
                     {job.client.name}
                   </a>
                 </Link>
               </td>
-              <td className='py-4 px-6'>£{job.cost}</td>
-              <td className='py-4 px-6'>{job.includingVat ? 'Y' : 'N'}</td>
-              <td className='py-4 px-6'>{job.status}</td>
-              <td className='py-4 px-6'>{job.department}</td>
-              <td className='py-4 px-6'>{job.createdAt}</td>
-              <td className='py-4 px-6 text-right'>
-                <button
-                  type='button'
-                  className='font-medium text-indigo-600 hover:border-indigo-500 border-b border-transparent transition duration-200'
-                >
-                  Edit
-                </button>
+              <td className='p-4'>£{job.cost}</td>
+              <td className='p-4'>{job.includingVat ? 'Y' : 'N'}</td>
+              <td
+                className={`p-4 text-white ${statusColours
+                  .map((colour) =>
+                    job.status === colour.status ? colour.colour : ''
+                  )
+                  .join('')}`}
+              >
+                {job.status}
+              </td>
+              <td className='p-4'>{job.department}</td>
+              <td className='p-4'>{job.createdAt}</td>
+              <td className='p-4 text-right'>
+                <Link href={`/jobs/${job.id}`}>
+                  <a className='font-medium text-indigo-600 hover:border-indigo-500 border-b border-transparent transition duration-200'>
+                    View
+                  </a>
+                </Link>
               </td>
             </tr>
           ))}

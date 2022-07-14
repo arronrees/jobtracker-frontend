@@ -24,44 +24,32 @@ export default function FilterTableHeading({ clients, allJobs, setJobs }) {
   }, [selectedFilter, allJobs, setJobs]);
 
   return (
-    <section className='mb-8 flex items-center gap-8'>
+    <section className='mb-8 flex items-end gap-8'>
       <div>
         <FilterClientList
           options={clients}
           setSelectedFilter={setSelectedFilter}
         />
-        <button
-          type='button'
-          className='font-medium text-indigo-600 hover:border-indigo-500 border-b border-transparent transition duration-200'
-          onClick={() => setSelectedFilter('')}
-        >
-          Reset Client Filter
-        </button>
       </div>
       <div>
         <FilterStatusList
           options={jobStatuses}
           setSelectedFilter={setSelectedFilter}
         />
-        <button
-          type='button'
-          className='font-medium text-indigo-600 hover:border-indigo-500 border-b border-transparent transition duration-200'
-          onClick={() => setSelectedFilter('')}
-        >
-          Reset Status Filter
-        </button>
       </div>
       <div>
         <FilterDepartmentList
           options={departments}
           setSelectedFilter={setSelectedFilter}
         />
+      </div>
+      <div className='ml-auto'>
         <button
-          type='button'
-          className='font-medium text-indigo-600 hover:border-indigo-500 border-b border-transparent transition duration-200'
-          onClick={() => setSelectedFilter('')}
+          type='submit'
+          className='inline-block text-center font-medium bg-red-500 text-white px-4 py-2 rounded-md transition duration-300 hover:bg-red-400 focus:ring-2 ring-inbg-indigo-600 ring-offset-2 focus:outline-none ring-red-600'
+          onClick={() => setSelectedFilter(null)}
         >
-          Reset Status Filter
+          Reset filters
         </button>
       </div>
     </section>

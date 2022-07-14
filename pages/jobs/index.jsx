@@ -17,7 +17,7 @@ export default function Jobs({ allJobs, clients }) {
         setJobs={setJobs}
       />
 
-      <PageJobTable jobs={jobs} />
+      <PageJobTable jobs={jobs} setJobs={setJobs} />
     </div>
   );
 }

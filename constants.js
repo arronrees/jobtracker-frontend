@@ -27,3 +27,18 @@ export const departments = [
     name: 'Other',
   },
 ];
+
+export const statusColours = [
+  {
+    status: 'Complete',
+    colour: 'bg-lime-500',
+  },
+  {
+    status: 'Quote',
+    colour: 'bg-blue-400',
+  },
+  {
+    status: 'In Progress',
+    colour: 'bg-orange-500',
+  },
+];

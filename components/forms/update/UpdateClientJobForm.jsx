@@ -20,7 +20,7 @@ export default function UpdateClientJobForm({ client, currentJob }) {
       title: formValues.get('title'),
       status: formValues.get('status'),
       cost: formValues.get('cost'),
-      includingVat: formValues.get('includingVat'),
+      includingVat: formValues.get('includingVat') ? true : false,
       department: formValues.get('department'),
     };
 
