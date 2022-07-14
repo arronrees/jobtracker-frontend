@@ -107,13 +107,11 @@ export default function UpdateClientJobForm({ currentJob }) {
           </>
         )}
       </FormSelect>
-
       <FormDate
         labelText='Completed At'
         inputName='completedDate'
         defaultValue={currentJob.completedDate}
       />
-
       <FormButton text='Update Job' />
     </form>
   );

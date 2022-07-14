@@ -5,6 +5,7 @@ import FormButton from '../../formSections/FormButton';
 import FormCheckbox from '../../formSections/FormCheckbox';
 import FormInput from '../../formSections/FormInput';
 import FormSelect from '../../formSections/FormSelect';
+import FormDate from '../../formSections/FormDate';
 
 export default function CreateClientJobForm({ client }) {
   const router = useRouter();
@@ -22,6 +23,8 @@ export default function CreateClientJobForm({ client }) {
       cost: formValues.get('cost'),
       includingVat: formValues.get('includingVat') ? true : false,
       department: formValues.get('department'),
+      type: formValues.get('type'),
+      completedDate: formValues.get('completedDate'),
     };
 
     const { data, error } = await sendFetch(
@@ -51,6 +54,7 @@ export default function CreateClientJobForm({ client }) {
         <option value='Print'>Print</option>
         <option value='Other'>Other</option>
       </FormSelect>
+      <FormDate labelText='Completed At' inputName='completedDate' />
       <FormButton text='Create New Job' />
     </form>
   );

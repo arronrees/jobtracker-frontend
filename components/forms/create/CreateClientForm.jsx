@@ -72,7 +72,7 @@ export default function ClientForm({ client }) {
         inputName='secondaryContactEmail'
       />
       <FormTextArea labelText='General Notes' inputName='generalNotes' />
-      <p className='font-bold'>Address</p>
+      <p className='font-bold mt-8'>Address</p>
       <FormInput labelText='Address Line 1' inputName='addressLine1' />
       <FormInput labelText='Address Line 2' inputName='addressLine2' />
       <FormInput labelText='Town' inputName='town' />
