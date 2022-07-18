@@ -5,7 +5,6 @@ import ClientFormWrapper from './ClientFormWrapper';
 
 export default function JobsTable({ client, setShowForm, showForm }) {
   const [jobs, setJobs] = useState(client.jobs);
-  const [currentJob, setCurrentJob] = useState(null);
 
   return (
     <>
@@ -29,7 +28,7 @@ export default function JobsTable({ client, setShowForm, showForm }) {
               Department
             </th>
             <th scope='col' className='cursor-pointer py-3 px-6'>
-              Created At
+              Created Date
             </th>
             <th scope='col' className='py-3 px-6'></th>
           </tr>
@@ -55,29 +54,18 @@ export default function JobsTable({ client, setShowForm, showForm }) {
                 <td className='py-4 px-6'>£{job.cost}</td>
                 <td className='py-4 px-6'>{job.status}</td>
                 <td className='py-4 px-6'>{job.department}</td>
-                <td className='py-4 px-6'>{job.createdAt}</td>
+                <td className='py-4 px-6'>{job.createdDate}</td>
                 <td className='py-4 px-6 text-right'>
-                  <button
-                    type='button'
-                    className='font-medium text-indigo-600 hover:border-indigo-500 border-b border-transparent transition duration-200'
-                    onClick={() => {
-                      setCurrentJob(job);
-                      setShowForm('update-job');
-                    }}
-                  >
-                    Edit
-                  </button>
+                  <Link href={`/jobs/${job.id}`}>
+                    <a className='font-medium text-indigo-600 hover:border-indigo-500 border-b border-transparent transition duration-200'>
+                      Edit
+                    </a>
+                  </Link>
                 </td>
               </tr>
             ))}
         </tbody>
       </table>
-
-      {showForm === 'update-job' && (
-        <ClientFormWrapper titleText='Update Job' setShowForm={setShowForm}>
-          <UpdateClientJobForm client={client} currentJob={currentJob} />
-        </ClientFormWrapper>
-      )}
     </>
   );
 }
