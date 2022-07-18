@@ -22,10 +22,7 @@ export default function PageJobTable({ jobs, setJobs }) {
             (a, b) => new Date(a[sorter]) - new Date(b[sorter])
           );
         }
-      } else if (
-        typeof jobs[0][sorter] === 'number' ||
-        sorter === 'includingVat'
-      ) {
+      } else if (typeof jobs[0][sorter] === 'number') {
         if (currentSort === sorter) {
           toSort = toSort.sort((a, b) => b[sorter] - a[sorter]);
           setCurrentSort('');
@@ -59,6 +56,13 @@ export default function PageJobTable({ jobs, setJobs }) {
           <th
             scope='col'
             className='cursor-pointer py-3 px-4'
+            onClick={() => handleSort('company')}
+          >
+            Company
+          </th>
+          <th
+            scope='col'
+            className='cursor-pointer py-3 px-4'
             onClick={() => handleSort('title')}
           >
             Title
@@ -87,13 +91,6 @@ export default function PageJobTable({ jobs, setJobs }) {
           <th
             scope='col'
             className='cursor-pointer py-3 px-4'
-            onClick={() => handleSort('includingVat')}
-          >
-            Including VAT
-          </th>
-          <th
-            scope='col'
-            className='cursor-pointer py-3 px-4'
             onClick={() => handleSort('status')}
           >
             Status
@@ -108,16 +105,16 @@ export default function PageJobTable({ jobs, setJobs }) {
           <th
             scope='col'
             className='cursor-pointer py-3 px-4'
-            onClick={() => handleSort('createdAt')}
+            onClick={() => handleSort('createdDate')}
           >
-            Created At
+            Created Date
           </th>
           <th
             scope='col'
             className='cursor-pointer py-3 px-4'
             onClick={() => handleSort('completedDate')}
           >
-            Completed At
+            Completed Date
           </th>
           <th scope='col' className='py-3 px-4'></th>
         </tr>
@@ -133,6 +130,12 @@ export default function PageJobTable({ jobs, setJobs }) {
                 scope='row'
                 className='p-4 text-gray-900 whitespace-nowrap font-medium '
               >
+                {job.company}
+              </th>
+              <th
+                scope='row'
+                className='p-4 text-gray-900 whitespace-nowrap font-medium '
+              >
                 {job.title}
               </th>
               <td className='p-4'></td>
@@ -144,9 +147,8 @@ export default function PageJobTable({ jobs, setJobs }) {
                 </Link>
               </td>
               <td className='p-4'>£{job.cost}</td>
-              <td className='p-4'>{job.includingVat ? 'Y' : 'N'}</td>
               <td
-                className={`p-4 text-white ${statusColours
+                className={`p-4 ${statusColours
                   .map((colour) =>
                     job.status === colour.status ? colour.colour : ''
                   )
@@ -155,7 +157,7 @@ export default function PageJobTable({ jobs, setJobs }) {
                 {job.status}
               </td>
               <td className='p-4'>{job.department}</td>
-              <td className='p-4'>{job.createdAt}</td>
+              <td className='p-4'>{job.createdDate}</td>
               <td className='p-4'>{job.completedDate}</td>
               <td className='p-4 text-right'>
                 <Link href={`/jobs/${job.id}`}>

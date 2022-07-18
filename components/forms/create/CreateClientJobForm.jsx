@@ -1,16 +1,21 @@
 import { useRouter } from 'next/router';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import sendFetch from '../../../utils/sendFetch';
 import FormButton from '../../formSections/FormButton';
-import FormCheckbox from '../../formSections/FormCheckbox';
 import FormInput from '../../formSections/FormInput';
 import FormSelect from '../../formSections/FormSelect';
 import FormDate from '../../formSections/FormDate';
+import { companies, departments, jobStatuses } from '../../../constants';
 
-export default function CreateClientJobForm({ client }) {
+export default function CreateClientJobForm({ clients }) {
   const router = useRouter();
 
   const formRef = useRef(null);
+
+  const [selectedStatus, setSelectedStatus] = useState(null);
+  const [selectedDepartment, setSelectedDepartment] = useState(null);
+  const [selectedCompany, setSelectedCompany] = useState(null);
+  const [client, setClient] = useState(null);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -18,17 +23,19 @@ export default function CreateClientJobForm({ client }) {
     const formValues = new FormData(formRef.current);
 
     const formDetails = {
+      company: selectedCompany,
       title: formValues.get('title'),
-      status: formValues.get('status'),
+      status: selectedStatus,
       cost: formValues.get('cost'),
-      includingVat: formValues.get('includingVat') ? true : false,
-      department: formValues.get('department'),
+      department: selectedDepartment,
       type: formValues.get('type'),
-      completedDate: formValues.get('completedDate'),
+      completedDate: formValues.get('completedDate')
+        ? formValues.get('completedDate')
+        : null,
     };
 
     const { data, error } = await sendFetch(
-      `http://localhost:4000/api/jobs/${client.id}`,
+      `http://localhost:4000/api/jobs/${client}`,
       'POST',
       formDetails
     );
@@ -40,21 +47,35 @@ export default function CreateClientJobForm({ client }) {
     }
   };
   return (
-    <form ref={formRef} onSubmit={handleFormSubmit}>
+    <form ref={formRef} onSubmit={handleFormSubmit} className='w-full'>
+      <FormSelect
+        labelText='Company To Bill From'
+        inputName='company'
+        options={companies}
+        setSelected={setSelectedCompany}
+      />
+      <FormSelect
+        labelText='Client'
+        inputName='client'
+        options={clients}
+        setSelected={setClient}
+      />
       <FormInput labelText='Job Title' inputName='title' />
-      <FormSelect labelText='Status' inputName='status'>
-        <option value='Quote'>Quote</option>
-        <option value='In Progress'>In Progress</option>
-        <option value='Complete'>Completed</option>
-      </FormSelect>
+      <FormSelect
+        labelText='Status'
+        inputName='status'
+        options={jobStatuses}
+        setSelected={setSelectedStatus}
+      />
       <FormInput labelText='Cost' inputName='cost' />
-      <FormCheckbox labelText='Including VAT' inputName='includingVat' />
-      <FormSelect labelText='Department' inputName='department'>
-        <option value='Web'>Web</option>
-        <option value='Print'>Print</option>
-        <option value='Other'>Other</option>
-      </FormSelect>
-      <FormDate labelText='Completed At' inputName='completedDate' />
+      <FormSelect
+        labelText='Department'
+        inputName='department'
+        options={departments}
+        setSelected={setSelectedDepartment}
+      />
+      <FormDate labelText='Created Date' inputName='createdDate' />
+      <FormDate labelText='Completed Date' inputName='completedDate' />
       <FormButton text='Create New Job' />
     </form>
   );

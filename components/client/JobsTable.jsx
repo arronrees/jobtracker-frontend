@@ -23,9 +23,6 @@ export default function JobsTable({ client, setShowForm, showForm }) {
               Cost
             </th>
             <th scope='col' className='cursor-pointer py-3 px-6'>
-              Including VAT
-            </th>
-            <th scope='col' className='cursor-pointer py-3 px-6'>
               Status
             </th>
             <th scope='col' className='cursor-pointer py-3 px-6'>
@@ -56,7 +53,6 @@ export default function JobsTable({ client, setShowForm, showForm }) {
                 </th>
                 <td className='py-4 px-6'></td>
                 <td className='py-4 px-6'>£{job.cost}</td>
-                <td className='py-4 px-6'>{job.includingVat ? 'Y' : 'N'}</td>
                 <td className='py-4 px-6'>{job.status}</td>
                 <td className='py-4 px-6'>{job.department}</td>
                 <td className='py-4 px-6'>{job.createdAt}</td>

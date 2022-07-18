@@ -4,6 +4,7 @@ import DetailSelection from '../../components/client/DetailSelection';
 import DetailSelectionForms from '../../components/client/DetailSelectionForms';
 import FormsToShow from '../../components/client/FormsToShow';
 import JobsTable from '../../components/client/JobsTable';
+import Link from 'next/link';
 
 export default function Client({ client }) {
   const [showForm, setShowForm] = useState(null);
@@ -39,13 +40,11 @@ export default function Client({ client }) {
           showForm={showForm}
         />
 
-        <button
-          type='button'
-          className='inline-block text-center font-medium bg-orange-600 text-white px-4 py-1 rounded-md transition duration-300 hover:bg-orange-500 focus:ring-2 ring-inbg-orange-600 ring-offset-2 focus:outline-none mt-4'
-          onClick={() => setShowForm('create-job')}
-        >
-          Create New Job
-        </button>
+        <Link href='/jobs/create'>
+          <a className='inline-block text-center font-medium bg-orange-600 text-white px-4 py-1 rounded-md transition duration-300 hover:bg-orange-500 focus:ring-2 ring-inbg-orange-600 ring-offset-2 focus:outline-none mt-4'>
+            Create New Job
+          </a>
+        </Link>
       </section>
     </div>
   );

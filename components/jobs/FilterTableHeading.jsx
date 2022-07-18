@@ -2,13 +2,20 @@ import { useEffect, useState } from 'react';
 import FilterClientList from './FilterClientList';
 import FilterStatusList from './FilterStatusList';
 import FilterDepartmentList from './FilterDepartmentList';
-import { departments, jobStatuses } from '../../constants';
+import FilterCompanyList from './FilterCompanyList';
+import FilterDateList from './FilterDateList';
+import { companies, departments, jobStatuses, years } from '../../constants';
 
-export default function FilterTableHeading({ clients, allJobs, setJobs }) {
+export default function FilterTableHeading({
+  clients,
+  allJobs,
+  setJobs,
+  jobs,
+}) {
   const [selectedFilter, setSelectedFilter] = useState(null);
 
   useEffect(() => {
-    if (selectedFilter) {
+    if (selectedFilter && selectedFilter.filter) {
       if (selectedFilter.filter === 'client') {
         setJobs(allJobs.filter((job) => job.client.id === selectedFilter.id));
       } else if (selectedFilter.filter === 'status') {
@@ -16,6 +23,16 @@ export default function FilterTableHeading({ clients, allJobs, setJobs }) {
       } else if (selectedFilter.filter === 'department') {
         setJobs(
           allJobs.filter((job) => job.department === selectedFilter.name)
+        );
+      } else if (selectedFilter.filter === 'company') {
+        setJobs(allJobs.filter((job) => job.company === selectedFilter.name));
+      } else if (selectedFilter.filter === 'createdDate') {
+        setJobs(
+          allJobs.filter(
+            (job) =>
+              new Date(job.createdDate).getFullYear() ===
+              new Date(selectedFilter.value).getFullYear()
+          )
         );
       }
     } else {
@@ -25,6 +42,12 @@ export default function FilterTableHeading({ clients, allJobs, setJobs }) {
 
   return (
     <section className='mb-8 flex items-end gap-8'>
+      <div>
+        <FilterCompanyList
+          options={companies}
+          setSelectedFilter={setSelectedFilter}
+        />
+      </div>
       <div>
         <FilterClientList
           options={clients}
@@ -42,6 +65,9 @@ export default function FilterTableHeading({ clients, allJobs, setJobs }) {
           options={departments}
           setSelectedFilter={setSelectedFilter}
         />
+      </div>
+      <div>
+        <FilterDateList options={years} setSelectedFilter={setSelectedFilter} />
       </div>
       <div className='ml-auto'>
         <button

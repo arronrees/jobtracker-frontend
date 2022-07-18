@@ -28,7 +28,7 @@ export default function ClientSearch({ clients }) {
         <div className='relative mt-1'>
           <div className='relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus-visible:ring-2 '>
             <Combobox.Input
-              className='block w-full rounded-md border-indigo-400 border-2 bg-transparent font-bold text-cyan-700 p-2 leading-none text-xs ring-offset-2 '
+              className='block w-full rounded-md border-indigo-400 border-2 bg-transparent font-bold text-indigo-700 p-2 leading-none text-xs ring-offset-2 '
               onChange={(event) => setQuery(event.target.value)}
             />
             <Combobox.Button className='absolute inset-y-0 right-0 flex items-center pr-2'>
@@ -57,7 +57,9 @@ export default function ClientSearch({ clients }) {
                       <Combobox.Option
                         className={({ active }) =>
                           `relative cursor-pointer select-none py-2 pl-10 pr-4 ${
-                            active ? 'bg-cyan-600 text-white' : 'text-cyan-900'
+                            active
+                              ? 'bg-indigo-600 text-white'
+                              : 'text-indigo-900'
                           }`
                         }
                         value={client}
