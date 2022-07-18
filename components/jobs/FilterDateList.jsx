@@ -3,7 +3,10 @@ import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
 
 export default function FilterDateList({ options, setSelectedFilter }) {
-  const [selected, setSelected] = useState(options[0]);
+  const [selected, setSelected] = useState({
+    id: 0,
+    name: 'Year',
+  });
 
   function classNames(...classes) {
     return classes.filter(Boolean).join(' ');

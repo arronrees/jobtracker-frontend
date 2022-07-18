@@ -7,7 +7,7 @@ export default function FormInput({ labelText, inputName, defaultValue }) {
       >
         <span className='text-gray-500 inline-block'>{labelText}:</span>
         <input
-          className='block w-full rounded-md border-gray-300 bg-transparent font-medium text-cyan-700 p-3 leading-none col-span-2 bg-gray-50'
+          className='block w-full rounded-md border-gray-300 bg-transparent font-medium text-cyan-700 p-3 leading-none col-span-2 bg-gray-50 text-xs'
           type='text'
           name={inputName}
           id={inputName}

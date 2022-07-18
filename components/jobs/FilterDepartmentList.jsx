@@ -3,7 +3,10 @@ import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
 
 export default function FilterDepartmentList({ options, setSelectedFilter }) {
-  const [selected, setSelected] = useState(options[0]);
+  const [selected, setSelected] = useState({
+    id: 0,
+    value: 'Department',
+  });
 
   function classNames(...classes) {
     return classes.filter(Boolean).join(' ');

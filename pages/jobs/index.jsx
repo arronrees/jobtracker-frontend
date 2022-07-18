@@ -24,7 +24,7 @@ export default function Jobs({ allJobs, clients }) {
           type='text'
           name='searchJobs'
           placeholder='Search jobs...'
-          className='block w-full rounded-md border-gray-300 bg-transparent font-medium p-3 leading-none col-span-2 bg-gray-50'
+          className='block w-full rounded-md border-gray-300 bg-transparent font-medium p-3 leading-none col-span-2 bg-gray-50 text-xs'
           onChange={({ target }) => {
             const query = target.value;
 
