@@ -56,6 +56,13 @@ export default function PageJobTable({ jobs, setJobs }) {
           <th
             scope='col'
             className='cursor-pointer py-3 px-4'
+            onClick={() => handleSort('createdDate')}
+          >
+            Created Date
+          </th>
+          <th
+            scope='col'
+            className='cursor-pointer py-3 px-4'
             onClick={() => handleSort('company')}
           >
             Company
@@ -77,7 +84,7 @@ export default function PageJobTable({ jobs, setJobs }) {
           <th
             scope='col'
             className='cursor-pointer py-3 px-4'
-            onClick={() => handleSort('client')}
+            onClick={() => handleSort('clientName')}
           >
             Client
           </th>
@@ -105,13 +112,6 @@ export default function PageJobTable({ jobs, setJobs }) {
           <th
             scope='col'
             className='cursor-pointer py-3 px-4'
-            onClick={() => handleSort('createdDate')}
-          >
-            Created Date
-          </th>
-          <th
-            scope='col'
-            className='cursor-pointer py-3 px-4'
             onClick={() => handleSort('completedDate')}
           >
             Completed Date
@@ -126,6 +126,7 @@ export default function PageJobTable({ jobs, setJobs }) {
               key={job.id}
               className='bg-white border-b last-of-type:border-b-2 even:bg-indigo-50'
             >
+              <td className='p-4'>{job.createdDate}</td>
               <th
                 scope='row'
                 className='p-4 text-gray-900 whitespace-nowrap font-medium '
@@ -157,8 +158,9 @@ export default function PageJobTable({ jobs, setJobs }) {
                 {job.status}
               </td>
               <td className='p-4'>{job.department}</td>
-              <td className='p-4'>{job.createdDate}</td>
-              <td className='p-4'>{job.completedDate}</td>
+              <td className={`p-4 ${job.completedDate ? 'bg-lime-200' : ''}`}>
+                {job.completedDate}
+              </td>
               <td className='p-4 text-right'>
                 <Link href={`/jobs/${job.id}`}>
                   <a className='font-medium text-indigo-600 hover:border-indigo-500 border-b border-transparent transition duration-200'>

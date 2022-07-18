@@ -32,6 +32,9 @@ export default function CreateClientJobForm({ clients }) {
       completedDate: formValues.get('completedDate')
         ? formValues.get('completedDate')
         : null,
+      createdDate: formValues.get('createdDate')
+        ? formValues.get('createdDate')
+        : null,
     };
 
     const { data, error } = await sendFetch(
@@ -41,7 +44,7 @@ export default function CreateClientJobForm({ clients }) {
     );
 
     if (data) {
-      router.reload();
+      router.push('/jobs');
     } else {
       console.log(error);
     }

@@ -5,9 +5,9 @@ import FormButton from '../../formSections/FormButton';
 import FormInput from '../../formSections/FormInput';
 import FormSelect from '../../formSections/FormSelect';
 import FormDate from '../../formSections/FormDate';
-import { departments, jobStatuses } from '../../../constants';
+import { companies, departments, jobStatuses } from '../../../constants';
 
-export default function UpdateClientJobForm({ currentJob }) {
+export default function UpdateClientJobForm({ currentJob, clients }) {
   const router = useRouter();
 
   const formRef = useRef(null);
@@ -16,6 +16,8 @@ export default function UpdateClientJobForm({ currentJob }) {
   const [selectedDepartment, setSelectedDepartment] = useState(
     currentJob.department
   );
+  const [selectedCompany, setSelectedCompany] = useState(currentJob.company);
+  const [client, setClient] = useState(currentJob.clientId);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -23,6 +25,8 @@ export default function UpdateClientJobForm({ currentJob }) {
     const formValues = new FormData(formRef.current);
 
     const formDetails = {
+      company: selectedCompany,
+      client,
       title: formValues.get('title'),
       status: selectedStatus,
       cost: formValues.get('cost'),
@@ -43,7 +47,7 @@ export default function UpdateClientJobForm({ currentJob }) {
     );
 
     if (data) {
-      router.reload();
+      router.push('/jobs');
     } else {
       console.log(error);
     }
@@ -55,6 +59,24 @@ export default function UpdateClientJobForm({ currentJob }) {
 
   return (
     <form ref={formRef} onSubmit={handleFormSubmit} className='w-full'>
+      <FormSelect
+        labelText='Company To Bill From'
+        inputName='company'
+        options={companies}
+        setSelected={setSelectedCompany}
+        defaultValue={companies.find(
+          (company) => company.name === currentJob.company
+        )}
+      />
+      <FormSelect
+        labelText='Client'
+        inputName='client'
+        options={clients}
+        setSelected={setClient}
+        defaultValue={clients.find(
+          (client) => client.id === currentJob.clientId
+        )}
+      />
       <FormInput
         labelText='Job Title'
         inputName='title'
@@ -80,7 +102,7 @@ export default function UpdateClientJobForm({ currentJob }) {
         options={departments}
         setSelected={setSelectedDepartment}
         defaultValue={departments.find(
-          (departments) => departments.value === currentJob.department
+          (department) => department.value === currentJob.department
         )}
       />
       <FormDate
