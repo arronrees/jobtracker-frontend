@@ -28,7 +28,7 @@ export default function CreateClientJobForm({ clients }) {
       company: selectedCompany,
       title: formValues.get('title'),
       status: selectedStatus,
-      cost: formValues.get('cost'),
+      cost: formValues.get('cost').replace('£', ''),
       department: selectedDepartment,
       type: formValues.get('type'),
       completedDate: formValues.get('completedDate')
@@ -75,7 +75,7 @@ export default function CreateClientJobForm({ clients }) {
         options={jobStatuses}
         setSelected={setSelectedStatus}
       />
-      <FormInput labelText='Cost' inputName='cost' defaultValue={0} />
+      <FormInput labelText='Cost' inputName='cost' defaultValue='£0' />
       <FormSelect
         labelText='Department'
         inputName='department'

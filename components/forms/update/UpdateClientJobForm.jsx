@@ -30,7 +30,7 @@ export default function UpdateClientJobForm({ currentJob, clients }) {
       client,
       title: formValues.get('title'),
       status: selectedStatus,
-      cost: formValues.get('cost'),
+      cost: formValues.get('cost').replace('£', ''),
       department: selectedDepartment,
       type: formValues.get('type'),
       completedDate: formValues.get('completedDate')
@@ -97,7 +97,7 @@ export default function UpdateClientJobForm({ currentJob, clients }) {
       <FormInput
         labelText='Cost'
         inputName='cost'
-        defaultValue={currentJob.cost}
+        defaultValue={`£${currentJob.cost}`}
       />
       <FormSelect
         labelText='Department'

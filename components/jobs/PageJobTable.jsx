@@ -158,9 +158,7 @@ export default function PageJobTable({ jobs, setJobs }) {
                 {job.status}
               </td>
               <td className='p-4'>{job.department}</td>
-              <td className={`p-4 ${job.completedDate ? 'bg-lime-200' : ''}`}>
-                {job.completedDate}
-              </td>
+              <td className='p-4'>{job.completedDate}</td>
               <td className='p-4 text-right'>
                 <Link href={`/jobs/${job.id}`}>
                   <a className='font-medium text-indigo-600 hover:border-indigo-500 border-b border-transparent transition duration-200'>

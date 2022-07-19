@@ -37,15 +37,15 @@ export const departments = [
 export const statusColours = [
   {
     status: 'Complete',
-    colour: 'bg-lime-500',
+    colour: 'bg-lime-400 text-white',
   },
   {
     status: 'Quote',
-    colour: 'bg-blue-400',
+    colour: 'bg-blue-400 text-white',
   },
   {
     status: 'In Progress',
-    colour: 'bg-orange-500',
+    colour: 'bg-orange-400 text-white',
   },
 ];
 
