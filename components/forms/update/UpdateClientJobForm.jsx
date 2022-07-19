@@ -6,6 +6,7 @@ import FormInput from '../../formSections/FormInput';
 import FormSelect from '../../formSections/FormSelect';
 import FormDate from '../../formSections/FormDate';
 import { companies, departments, jobStatuses } from '../../../constants';
+import toast from 'react-hot-toast';
 
 export default function UpdateClientJobForm({ currentJob, clients }) {
   const router = useRouter();
@@ -47,8 +48,10 @@ export default function UpdateClientJobForm({ currentJob, clients }) {
     );
 
     if (data) {
+      toast('Updated Job successfully');
       router.push('/jobs');
     } else {
+      toast(error);
       console.log(error);
     }
   };

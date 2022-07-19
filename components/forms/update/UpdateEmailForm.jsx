@@ -4,6 +4,7 @@ import sendFetch from '../../../utils/sendFetch';
 import DeleteDetailButton from '../../formSections/DeleteDetailButton';
 import FormButton from '../../formSections/FormButton';
 import FormInput from '../../formSections/FormInput';
+import toast from 'react-hot-toast';
 
 export default function EmailForm({ detail }) {
   const router = useRouter();
@@ -28,8 +29,10 @@ export default function EmailForm({ detail }) {
     );
 
     if (data) {
+      toast('Updated Email details successfully');
       router.reload();
     } else {
+      toast(error);
       console.log(error);
     }
   };

@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import sendFetch from '../../../utils/sendFetch';
 import FormButton from '../../formSections/FormButton';
 import FormInput from '../../formSections/FormInput';
+import toast from 'react-hot-toast';
 
 export default function FtpForm({ client }) {
   const router = useRouter();
@@ -29,8 +30,10 @@ export default function FtpForm({ client }) {
     );
 
     if (data) {
+      toast('FTP account created successfully');
       router.reload();
     } else {
+      toast(error);
       console.log(error);
     }
   };

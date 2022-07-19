@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import sendFetch from '../../../utils/sendFetch';
 import FormButton from '../../formSections/FormButton';
 import FormInput from '../../formSections/FormInput';
+import toast from 'react-hot-toast';
 
 export default function DatabaseForm({ client }) {
   const router = useRouter();
@@ -28,8 +29,10 @@ export default function DatabaseForm({ client }) {
     );
 
     if (data) {
+      toast('Database account created successfully');
       router.reload();
     } else {
+      toast(error);
       console.log(error);
     }
   };

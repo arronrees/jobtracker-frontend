@@ -5,6 +5,7 @@ import DeleteDetailButton from '../../formSections/DeleteDetailButton';
 import FormButton from '../../formSections/FormButton';
 import FormInput from '../../formSections/FormInput';
 import FormTextArea from '../../formSections/FormTextArea';
+import toast from 'react-hot-toast';
 
 export default function OtherAccountForm({ detail }) {
   const router = useRouter();
@@ -31,8 +32,10 @@ export default function OtherAccountForm({ detail }) {
     );
 
     if (data) {
+      toast('Updated other account successfully');
       router.reload();
     } else {
+      toast(error);
       console.log(error);
     }
   };

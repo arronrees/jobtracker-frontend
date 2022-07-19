@@ -4,6 +4,7 @@ import sendFetch from '../../../utils/sendFetch';
 import FormButton from '../../formSections/FormButton';
 import FormInput from '../../formSections/FormInput';
 import FormTextArea from '../../formSections/FormTextArea';
+import toast from 'react-hot-toast';
 
 export default function ClientForm({ client }) {
   const router = useRouter();
@@ -42,8 +43,10 @@ export default function ClientForm({ client }) {
     );
 
     if (data) {
+      toast('Updated Client details successfully');
       router.reload();
     } else {
+      toast(error);
       console.log(error);
     }
   };

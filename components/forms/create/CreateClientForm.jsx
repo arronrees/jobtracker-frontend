@@ -4,6 +4,7 @@ import sendFetch from '../../../utils/sendFetch';
 import FormButton from '../../formSections/FormButton';
 import FormInput from '../../formSections/FormInput';
 import FormTextArea from '../../formSections/FormTextArea';
+import toast from 'react-hot-toast';
 
 export default function ClientForm({ client }) {
   const router = useRouter();
@@ -21,15 +22,23 @@ export default function ClientForm({ client }) {
         primaryContactName: formValues.get('primaryContactName'),
         primaryContactNumber: formValues.get('primaryContactNumber'),
         primaryContactEmail: formValues.get('primaryContactEmail'),
-        secondaryContactNumber: formValues.get('secondaryContactNumber'),
-        secondaryContactEmail: formValues.get('secondaryContactEmail'),
-        generalNotes: formValues.get('generalNotes'),
+        secondaryContactNumber: formValues.get('secondaryContactNumber')
+          ? formValues.get('secondaryContactNumber')
+          : null,
+        secondaryContactEmail: formValues.get('secondaryContactEmail')
+          ? formValues.get('secondaryContactEmail')
+          : null,
+        generalNotes: formValues.get('generalNotes')
+          ? formValues.get('generalNotes')
+          : null,
       },
       address: {
         addressLine1: formValues.get('addressLine1'),
-        addressLine2: formValues.get('addressLine2'),
+        addressLine2: formValues.get('addressLine2')
+          ? formValues.get('addressLine2')
+          : null,
         town: formValues.get('town'),
-        county: formValues.get('county'),
+        county: formValues.get('county') ? formValues.get('county') : null,
         postCode: formValues.get('postCode'),
         country: formValues.get('country'),
       },
@@ -42,8 +51,10 @@ export default function ClientForm({ client }) {
     );
 
     if (data) {
+      toast('Client created successfully');
       router.push(`/clients/${data.data.id}`);
     } else {
+      toast(error);
       console.log(error);
     }
   };

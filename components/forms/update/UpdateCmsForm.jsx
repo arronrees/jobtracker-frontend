@@ -4,6 +4,7 @@ import sendFetch from '../../../utils/sendFetch';
 import DeleteDetailButton from '../../formSections/DeleteDetailButton';
 import FormButton from '../../formSections/FormButton';
 import FormInput from '../../formSections/FormInput';
+import toast from 'react-hot-toast';
 
 export default function CmsForm({ detail }) {
   const router = useRouter();
@@ -29,8 +30,10 @@ export default function CmsForm({ detail }) {
     );
 
     if (data) {
+      toast('Updated CMS details successfully');
       router.reload();
     } else {
+      toast(error);
       console.log(error);
     }
   };

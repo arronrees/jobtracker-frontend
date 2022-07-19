@@ -6,6 +6,8 @@ import FormInput from '../../formSections/FormInput';
 import FormSelect from '../../formSections/FormSelect';
 import FormDate from '../../formSections/FormDate';
 import { companies, departments, jobStatuses } from '../../../constants';
+import toast from 'react-hot-toast';
+import { getTodaysDate } from '../../../utils/getTodaysDate';
 
 export default function CreateClientJobForm({ clients }) {
   const router = useRouter();
@@ -44,11 +46,14 @@ export default function CreateClientJobForm({ clients }) {
     );
 
     if (data) {
+      toast('New job created successfully');
       router.push('/jobs');
     } else {
+      toast(error);
       console.log(error);
     }
   };
+
   return (
     <form ref={formRef} onSubmit={handleFormSubmit} className='w-full'>
       <FormSelect
@@ -70,14 +75,18 @@ export default function CreateClientJobForm({ clients }) {
         options={jobStatuses}
         setSelected={setSelectedStatus}
       />
-      <FormInput labelText='Cost' inputName='cost' />
+      <FormInput labelText='Cost' inputName='cost' defaultValue={0} />
       <FormSelect
         labelText='Department'
         inputName='department'
         options={departments}
         setSelected={setSelectedDepartment}
       />
-      <FormDate labelText='Created Date' inputName='createdDate' />
+      <FormDate
+        labelText='Created Date'
+        inputName='createdDate'
+        defaultValue={getTodaysDate()}
+      />
       <FormDate labelText='Completed Date' inputName='completedDate' />
       <FormButton text='Create New Job' />
     </form>

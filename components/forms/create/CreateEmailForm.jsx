@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import sendFetch from '../../../utils/sendFetch';
 import FormButton from '../../formSections/FormButton';
 import FormInput from '../../formSections/FormInput';
+import toast from 'react-hot-toast';
 
 export default function EmailForm({ client }) {
   const router = useRouter();
@@ -27,8 +28,10 @@ export default function EmailForm({ client }) {
     );
 
     if (data) {
+      toast('Email account created successfully');
       router.reload();
     } else {
+      toast(error);
       console.log(error);
     }
   };

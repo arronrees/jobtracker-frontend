@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import sendFetch from '../../../utils/sendFetch';
 import FormButton from '../../formSections/FormButton';
 import FormInput from '../../formSections/FormInput';
+import toast from 'react-hot-toast';
 
 export default function CmsForm({ client }) {
   const router = useRouter();
@@ -28,8 +29,10 @@ export default function CmsForm({ client }) {
     );
 
     if (data) {
+      toast('CMS account created successfully');
       router.reload();
     } else {
+      toast(error);
       console.log(error);
     }
   };

@@ -4,6 +4,7 @@ import sendFetch from '../../../utils/sendFetch';
 import FormButton from '../../formSections/FormButton';
 import FormInput from '../../formSections/FormInput';
 import FormTextArea from '../../formSections/FormTextArea';
+import toast from 'react-hot-toast';
 
 export default function OtherAccountForm({ client }) {
   const router = useRouter();
@@ -30,8 +31,10 @@ export default function OtherAccountForm({ client }) {
     );
 
     if (data) {
+      toast('Client other account created sucessfully');
       router.reload();
     } else {
+      toast(error);
       console.log(error);
     }
   };
